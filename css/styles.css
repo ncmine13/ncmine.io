@@ -45,10 +45,10 @@ button {
 .triv {
 	position: absolute;
 	top: 0px;
-	margin: 15% 35%;
-	height: 400px;
-	width: 400px;
-	background-color: #33164F;
+	margin: 15% 27%;
+	height: 450px;
+	width: 600px;
+	background-color: #23234C;
 	color: white;
 }
 
@@ -64,9 +64,15 @@ ul {
 .trivTime {
 	position: absolute;
 	top: 0px;
-	margin: 6% 0% 48% 41%;
+	margin: 5% 0% 48% 39%;
 	color: #33164F;
+	font-size: 60px;
 	text-shadow: 2px 1px 1px black;
+}
+
+.break {
+	height: 5px;
+	background-color: #DCE9E9;
 }
 
 .hidden {
