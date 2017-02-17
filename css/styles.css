@@ -64,9 +64,11 @@ ul {
 .trivTime {
 	position: absolute;
 	top: 0px;
-	margin: 5% 38%;
+	margin: 6% 0% 48% 41%;
 	color: #33164F;
 	text-shadow: 2px 1px 1px black;
+}
 
-
+.hidden {
+	visibility: hidden;
 }

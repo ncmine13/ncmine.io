@@ -50,12 +50,61 @@ var restOpacity = function(){
 	}
 }
 
-var drawTriv = function(){
-	ctx.beginPath();
-	ctx.moveTo(300, 200);
-	ctx.fillStyle = "#1F354B";
-	ctx.fillRect(200, 200, 200, 200);
+// var drawTriv = function(){
+// 	ctx.beginPath();
+// 	ctx.moveTo(300, 200);
+// 	ctx.fillStyle = "#1F354B";
+// 	ctx.fillRect(200, 200, 200, 200);
+// }
+
+//hide trivia q
+var showHidden = function(){
+	var hidden = document.getElementsByClassName("hidden")
+	for(i=0; i<hidden.length; i++){
+		hidden[i].style.visibility = "visible";
+	}
 }
+
+var nextQ = document.getElementById("nextQ-btn")
+nextQ.addEventListener("click", function(event){
+	console.log("clicked");
+	var changeOpacity = function(){
+		var decrOpacity = document.getElementsByClassName("lessOpaque");
+		for(i=0; i<decrOpacity.length; i++){
+			decrOpacity[i].style.opacity = "0.3";
+		}
+	}
+	changeOpacity();
+	var showHidden = function(){
+		var hidden = document.getElementsByClassName("hidden")
+		for(i=0; i<hidden.length; i++){
+			hidden[i].style.visibility = "visible";
+		}
+	}
+	showHidden();
+})
+
+// var nextQuestion = function(event){
+// 	console.log(event);
+// 	console.log("thisbuttonwasclicked")
+// 	nextQ.addEventListener("click", function(){
+// 		var decrOpacity = document.getElementsByClassName("lessOpaque");
+// 		var changeOpacity = function(){
+// 			for(i=0; i<decrOpacity.length; i++){
+// 				decrOpacity[i].style.opacity = "0.3";
+// 			}
+// 		}
+// 		var showHidden = function(){
+// 			var hidden = document.getElementsByClassName("hidden")
+// 			for(i=0; i<hidden.length; i++){
+// 				hidden[i].style.visibility = "visible";
+// 			}
+// 		}
+//
+// 	})
+// }
+
+
 //
 // //I want at least 5 or 6 images to construct and i need about 10 questions per picture
 // //store in objects to organize code
