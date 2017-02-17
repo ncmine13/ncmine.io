@@ -22,18 +22,18 @@ var picture = {
 // 	ctx.fillRect(100, 100, 300, 300)
 // }
 // //
-// var drawCircles = function(){
-// 	for(i=0; i<50; i++){
-// 		var cordx = Math.random()*800;
-// 		var cordy = Math.random()*600;
-// 		ctx.arc(cordx, cordy, 10, 0, Math.PI * 2, true);
-// 		ctx.fillStyle = "green"
-// 		ctx.fill();
-// 		ctx.beginPath();
-// 	}
-// 	rectangle()
-// 	//circle()
-// }
+var drawCircles = function(){
+	for(i=0; i<50; i++){
+		var cordx = Math.random()*800;
+		var cordy = Math.random()*600;
+		ctx.arc(cordx, cordy, 10, 0, Math.PI * 2, true);
+		ctx.fillStyle = "green"
+		ctx.fill();
+		ctx.beginPath();
+	}
+	rectangle()
+	//circle()
+}
 //
 // //I want at least 5 or 6 images to construct and i need about 10 questions per picture
 // //store in objects to organize code

@@ -1,8 +1,43 @@
 body {
 	background-color: #DCE9E9;
+	font-family: Arial, sans-serif;
+
 }
 
+header {
+	height: 120px;
+	margin: 0px 10px 20px 10px;
+	background-color: #6A849E;
+}
 canvas {
-	border: 3px solid black;
-	margin-left: 200px;
+	border: 8px solid #1F354B;
+}
+
+.canvas {
+	text-align: center;
+}
+
+.points {
+	color: white;
+	float: left;
+	margin-left: 40px;
+}
+h1 {
+	font-weight: 200;
+	font-size: 50px;
+}
+
+.buttons {
+	float: right;
+	text-align: center;
+	margin: 25px 20px 0px 20px;
+
+}
+
+button {
+	color: white;
+	background: #0e4b70;
+	padding: 25px;
+
+	/*margin-top: 20px;*/
 }
