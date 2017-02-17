@@ -40,5 +40,33 @@ button {
 	padding: 15px;
 	font-size: 25px;
 
-	/*margin-top: 20px;*/
+}
+
+.triv {
+	position: absolute;
+	top: 0px;
+	margin: 15% 35%;
+	height: 400px;
+	width: 400px;
+	background-color: #33164F;
+	color: white;
+}
+
+ul {
+	margin-left: 50px;
+	font-size: 20px;
+}
+
+.questionHeading {
+	margin-left: 40px;
+}
+
+.trivTime {
+	position: absolute;
+	top: 0px;
+	margin: 5% 38%;
+	color: #33164F;
+	text-shadow: 2px 1px 1px black;
+
+
 }

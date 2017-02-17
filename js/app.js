@@ -35,13 +35,27 @@ var drawCircles = function(){
 	//circle()
 }
 
+//decreases opacity of background when trivia question pops up
 var decrOpacity = document.getElementsByClassName("lessOpaque");
 var changeOpacity = function(){
 	for(i=0; i<decrOpacity.length; i++){
-		decrOpacity[i].style.opacity = "0.4";
+		decrOpacity[i].style.opacity = "0.3";
 	}
 }
 
+//restores opacity to 1
+var restOpacity = function(){
+	for(i=0; i<decrOpacity.length; i++){
+		decrOpacity[i].style.opacity = "1";
+	}
+}
+
+var drawTriv = function(){
+	ctx.beginPath();
+	ctx.moveTo(300, 200);
+	ctx.fillStyle = "#1F354B";
+	ctx.fillRect(200, 200, 200, 200);
+}
 //
 // //I want at least 5 or 6 images to construct and i need about 10 questions per picture
 // //store in objects to organize code
