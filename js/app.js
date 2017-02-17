@@ -1,30 +1,30 @@
-// console.log("hooked upp")
-//
+console.log("hooked upp")
+
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
-var picture = {
-	rectangle: function(){
-		ctx.fillStyle = "#DCE9E9"
-		ctx.fillRect(100, 100, 300, 300)
-	},
-	circle: function(){
-		ctx.arc(400, 200, 150, 0, Math.PI*2, true);
-		ctx.fillStyle = "#DCE9E9"
-		ctx.fill()
-		ctx.beginPath()
-	}
-
-}
+// var picture = {
+// 	rectangle: function(){
+// 		ctx.fillStyle = "#DCE9E9"
+// 		ctx.fillRect(100, 100, 300, 300)
+// 	},
+// 	circle: function(){
+// 		ctx.arc(400, 200, 150, 0, Math.PI*2, true);
+// 		ctx.fillStyle = "#DCE9E9"
+// 		ctx.fill()
+// 		ctx.beginPath()
+// 	}
 //
-// var rectangle = function(){
-// 	ctx.fillStyle = "#DCE9E9"
-// 	ctx.fillRect(100, 100, 300, 300)
 // }
+//
+var rectangle = function(){
+	ctx.fillStyle = "#DCE9E9"
+	ctx.fillRect(100, 100, 300, 300)
+}
 // //
 var drawCircles = function(){
 	for(i=0; i<50; i++){
-		var cordx = Math.random()*800;
+		var cordx = Math.random()*900;
 		var cordy = Math.random()*600;
 		ctx.arc(cordx, cordy, 10, 0, Math.PI * 2, true);
 		ctx.fillStyle = "green"
@@ -34,6 +34,14 @@ var drawCircles = function(){
 	rectangle()
 	//circle()
 }
+
+var decrOpacity = document.getElementsByClassName("lessOpaque");
+var changeOpacity = function(){
+	for(i=0; i<decrOpacity.length; i++){
+		decrOpacity[i].style.opacity = "0.4";
+	}
+}
+
 //
 // //I want at least 5 or 6 images to construct and i need about 10 questions per picture
 // //store in objects to organize code

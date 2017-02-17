@@ -30,14 +30,15 @@ h1 {
 .buttons {
 	float: right;
 	text-align: center;
-	margin: 25px 20px 0px 20px;
+	margin: 35px 20px 0px 20px;
 
 }
 
 button {
 	color: white;
 	background: #0e4b70;
-	padding: 25px;
+	padding: 15px;
+	font-size: 25px;
 
 	/*margin-top: 20px;*/
 }
