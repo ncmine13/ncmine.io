@@ -5,9 +5,13 @@ var ctx = canvas.getContext('2d');
 var scoreCounter = document.getElementsByTagName("h1")[0]
 var body = document.getElementsByTagName("body")[0];
 var score = document.getElementsByClassName("score");
+var decrOpacity = document.getElementsByClassName("lessOpaque");
+var hidden = document.getElementsByClassName("hidden");
+var nextQuestion = document.getElementById("nextQ-btn")
 
 var game = {
 	score: 0,
+	counter: 0,
 	drawCircles: function(){
 			for(i=0; i<50; i++){
 				var cordx = Math.random()*900;
@@ -24,53 +28,58 @@ var game = {
 			//circle()
 	},
 	changeOpacity: function(){
-		var decrOpacity = document.getElementsByClassName("lessOpaque");
+
 		for(i=0; i<decrOpacity.length; i++){
 			decrOpacity[i].style.opacity = "0.3";
 		}
 	},
 	showHidden: function(){
-		var hidden = document.getElementsByClassName("hidden")
+
 		for(i=0; i<hidden.length; i++){
 			hidden[i].style.visibility = "visible";
 		}
 	},
 	restOpacity: function(){
-
+		for(i=0; i<decrOpacity.length; i++){
+			decrOpacity[i].style.opacity = "1";
+			hidden[i].style.visibility = "hidden"
+		}
 	},
 	nextQ: function(){
 
 	}
 }
 
-var nextQ = document.getElementById("nextQ-btn")
-nextQ.addEventListener("click", function(event){
+
+
+nextQuestion.addEventListener("click", function(event){
 	console.log("clicked");
 	game.changeOpacity();
 	game.showHidden();
+	game.counter++;
+	for(i=0; i<questionArray.length; i++){
+		var q = game.counter - 1;
+		document.getElementsByTagName("h1")[1].innerHTML = questionArray[q];
+		document.getElementsByTagName("li")[0].innerHTML = a1Array[q];
+		document.getElementsByTagName("li")[1].innerHTML = a2Array[q];
+		document.getElementsByTagName("li")[2].innerHTML = a3Array[q];
+		document.getElementsByTagName("li")[3].innerHTML = a4Array[q];
+	}
 })
 
-// var drawCircles = function(){
-// 	for(i=0; i<100; i++){
-// 		var cordx = Math.random()*800;
-// 		var cordy = Math.random()*600;
-// 		ctx.arc(cordx, cordy, 10, 0, Math.PI * 2, true);
-// 		if( (cordx < 100)&&(cordy < 100) ||
-// 			(cordx < 100)&&(100 < cordy < 400) ||
-// 			(cordx < 100)&&(cordy > 400) ||
-// 			(cordx > 100)&&(cordy<100) ||
-// 			(cordx > 100)&&(cordy > 400) ||
-// 			(cordx > 400)&&(100 < cordy < 400)
-// 		){
-// 			ctx.fillStyle = "green"
-// 		} else {
-// 			ctx.fillStyle = "blue"
-// 		}
-// 		ctx.fill();
-// 		ctx.beginPath();
-// 	}
-//
-// }
+
+//add event listener for each answer
+//function for correct answerQ
+//function for incorrect answer
+
+
+var questionArray = ["What is three plus three?", "Is the earth tilted?"]
+var a1Array = ["3", "Yes"]
+var a2Array = ["6", "No"]
+var a3Array = ["4", "Maybe"]
+var a4Array = ["9", "Sometimes"]
+var correctAnswer = ["6", "Yes"]
+
 
 var picture = {
 	rectangle: function(){
@@ -114,61 +123,10 @@ var picture = {
 }
 var pictureArray = [picture.rectangle(), picture.circle(), picture.bunny()]
 
-//
-
-// var drawCircles = function(){
-// 	for(i=0; i<50; i++){
-// 		var cordx = Math.random()*900;
-// 		var cordy = Math.random()*600;
-// 		ctx.arc(cordx, cordy, 10, 0, Math.PI * 2, true);
-// 		ctx.fillStyle = "green"
-// 		ctx.fill();
-// 		ctx.beginPath();
-// 	}
-// 	picture.bunny();
-// 	score.innerHTML = "Points: " + score++;
-//
-// 	//picture.rectangle()
-// 	//circle()
-// }
-
-//decreases opacity of background when trivia question pops up
-var decrOpacity = document.getElementsByClassName("lessOpaque");
-var changeOpacity = function(){
-	for(i=0; i<decrOpacity.length; i++){
-		decrOpacity[i].style.opacity = "0.3";
-	}
-}
-
-//restores opacity to 1
-var restOpacity = function(){
-	for(i=0; i<decrOpacity.length; i++){
-		decrOpacity[i].style.opacity = "1";
-	}
-}
-
-// var drawTriv = function(){
-// 	ctx.beginPath();
-// 	ctx.moveTo(300, 200);
-// 	ctx.fillStyle = "#1F354B";
-// 	ctx.fillRect(200, 200, 200, 200);
-// }
-
-//hide trivia q
 
 
 
 
-//
-// var scoreCounter = function(){
-// 	points.addEventListener("load", function load(event){
-// 		console.log("loaded yo")
-// 		score.innerHTML = "0";
-// 	})
-// 	//onload score === 0
-// 	//every time drawcircles runs, add 15 points
-// 	//every time picture guess is correct add 100 points
-// }
 
 // var scoreCount = document.getElementsByClassName("score")
 // var score = {
@@ -182,12 +140,7 @@ var restOpacity = function(){
 // 		}
 // 	}
 // }
-window.addEventListener( "load", function(event){
-	var score = document.getElementsByClassName("score");
-	console.log("loaded yo");
-	score.innerHTML = "0";
-	console.log("points");
-})
+
 
 // var answerQ =
 // //if(correct answer is chosen) {
