@@ -1,7 +1,55 @@
 console.log("hooked upp")
 
-// var canvas = document.getElementById('canvas');
-// var ctx = canvas.getContext('2d');
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+var scoreCounter = document.getElementsByTagName("h1")[0]
+var body = document.getElementsByTagName("body")[0];
+var score = document.getElementsByClassName("score");
+
+var game = {
+	score: 0,
+	drawCircles: function(){
+			for(i=0; i<50; i++){
+				var cordx = Math.random()*900;
+				var cordy = Math.random()*600;
+				ctx.arc(cordx, cordy, 10, 0, Math.PI * 2, true);
+				ctx.fillStyle = "green"
+				ctx.fill();
+				ctx.beginPath();
+			}
+			picture.bunny();
+			this.score += 10;
+			scoreCounter.innerHTML = "Points: " + game.score;
+			//picture.rectangle()
+			//circle()
+	},
+	changeOpacity: function(){
+		var decrOpacity = document.getElementsByClassName("lessOpaque");
+		for(i=0; i<decrOpacity.length; i++){
+			decrOpacity[i].style.opacity = "0.3";
+		}
+	},
+	showHidden: function(){
+		var hidden = document.getElementsByClassName("hidden")
+		for(i=0; i<hidden.length; i++){
+			hidden[i].style.visibility = "visible";
+		}
+	},
+	restOpacity: function(){
+
+	},
+	nextQ: function(){
+
+	}
+}
+
+var nextQ = document.getElementById("nextQ-btn")
+nextQ.addEventListener("click", function(event){
+	console.log("clicked");
+	game.changeOpacity();
+	game.showHidden();
+})
+
 // var drawCircles = function(){
 // 	for(i=0; i<100; i++){
 // 		var cordx = Math.random()*800;
@@ -64,21 +112,25 @@ var picture = {
 	}
 
 }
+var pictureArray = [picture.rectangle(), picture.circle(), picture.bunny()]
+
 //
 
-var drawCircles = function(){
-	for(i=0; i<50; i++){
-		var cordx = Math.random()*900;
-		var cordy = Math.random()*600;
-		ctx.arc(cordx, cordy, 10, 0, Math.PI * 2, true);
-		ctx.fillStyle = "green"
-		ctx.fill();
-		ctx.beginPath();
-	}
-	picture.bunny();
-	//picture.rectangle()
-	//circle()
-}
+// var drawCircles = function(){
+// 	for(i=0; i<50; i++){
+// 		var cordx = Math.random()*900;
+// 		var cordy = Math.random()*600;
+// 		ctx.arc(cordx, cordy, 10, 0, Math.PI * 2, true);
+// 		ctx.fillStyle = "green"
+// 		ctx.fill();
+// 		ctx.beginPath();
+// 	}
+// 	picture.bunny();
+// 	score.innerHTML = "Points: " + score++;
+//
+// 	//picture.rectangle()
+// 	//circle()
+// }
 
 //decreases opacity of background when trivia question pops up
 var decrOpacity = document.getElementsByClassName("lessOpaque");
@@ -105,24 +157,46 @@ var restOpacity = function(){
 //hide trivia q
 
 
-var nextQ = document.getElementById("nextQ-btn")
-nextQ.addEventListener("click", function(event){
-	console.log("clicked");
-	var changeOpacity = function(){
-		var decrOpacity = document.getElementsByClassName("lessOpaque");
-		for(i=0; i<decrOpacity.length; i++){
-			decrOpacity[i].style.opacity = "0.3";
-		}
-	}
-	changeOpacity();
-	var showHidden = function(){
-		var hidden = document.getElementsByClassName("hidden")
-		for(i=0; i<hidden.length; i++){
-			hidden[i].style.visibility = "visible";
-		}
-	}
-	showHidden();
+
+
+//
+// var scoreCounter = function(){
+// 	points.addEventListener("load", function load(event){
+// 		console.log("loaded yo")
+// 		score.innerHTML = "0";
+// 	})
+// 	//onload score === 0
+// 	//every time drawcircles runs, add 15 points
+// 	//every time picture guess is correct add 100 points
+// }
+
+// var scoreCount = document.getElementsByClassName("score")
+// var score = {
+// 	points: 0,
+// 	guessPic: function(){
+//
+// 	},
+// 	answerQCorrectly: function(){
+// 		if(drawCircles()){
+// 			scoreCount.innerHTML += 10
+// 		}
+// 	}
+// }
+window.addEventListener( "load", function(event){
+	var score = document.getElementsByClassName("score");
+	console.log("loaded yo");
+	score.innerHTML = "0";
+	console.log("points");
 })
+
+// var answerQ =
+// //if(correct answer is chosen) {
+// 	//return opacity to how it was and gain points
+	//drawCircles();
+// } else {
+	//lose points
+	//run "guess again" prompt
+//}
 
 
 //I want at least 5 or 6 images to construct and i need about 10 questions per picture
