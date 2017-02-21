@@ -25,8 +25,40 @@ var rect = function(){
 		}
 
 	}
+}
 
+var binny = function(){
+	console.log("yahah")
+}
 
+var bunny = function(){
+	for(i=0; i<50; i++) {
+		ctx.beginPath();
+		ctx.arc(195, 380, 60, 0, Math.PI*2, true);
+		ctx.beginPath();
+		ctx.ellipse(290, 340, 100, 120, 40 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.beginPath();
+		ctx.ellipse(370, 240, 85, 55, 45 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.beginPath();
+		ctx.ellipse(330, 150, 95, 30, 45 * Math.PI/105, 0, 2 * Math.PI)
+		ctx.beginPath();
+		ctx.ellipse(310, 155, 92, 28, 45 * Math.PI/170, 0, 2 * Math.PI)
+		ctx.beginPath();
+		var cordx = Math.random()*600;
+		var cordy = Math.random()*600;
+		if(ctx.isPointInPath(cordx, cordy)){
+				ctx.beginPath()
+				ctx.arc(cordx, cordy, 10, 0, Math.PI * 2, true);
+				ctx.fillStyle = "green"
+				ctx.fill();
+		} else {
+				ctx.beginPath()
+				ctx.arc(cordx, cordy, 10, 0, Math.PI * 2, true);
+				ctx.fillStyle = "blue"
+				ctx.fill();
+		}
+
+	}
 }
 //
 //

@@ -15,16 +15,19 @@ var answer3 = document.getElementsByTagName("li")[2];
 var answer4 = document.getElementsByTagName("li")[3];
 var hidden = document.getElementsByClassName("hidden");
 
+// ctx.rect(10, 10, 100, 100);
+// ctx.stroke();
+// console.log(ctx.isPointInPath(10, 10));
 
 var game = {
 	score: 0,
 	counter: 0,
 	drawCircles: function(){
-			for(i=0; i<50; i++){
+			for(i=0; i<100; i++){
 				var cordx = Math.random()*900;
 				var cordy = Math.random()*600;
-				ctx.arc(cordx, cordy, 10, 0, Math.PI * 2, true);
-				ctx.fillStyle = "green"
+				ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
+				ctx.fillStyle = "#1D381D";
 				ctx.fill();
 				ctx.beginPath();
 			}
@@ -68,10 +71,10 @@ nextQuestion.addEventListener("click", function(event){
 	for(i=0; i<questionArray.length; i++){
 		var q = game.counter - 1;
 		questionHeading.innerHTML = questionArray[q];
-		answer1.innerHTML = a1Array[q];
-		answer2.innerHTML = a2Array[q];
-		answer3.innerHTML = a3Array[q];
-		answer4.innerHTML = a4Array[q];
+		answer1.innerHTML = "A. " + a1Array[q];
+		answer2.innerHTML = "B. " + a2Array[q];
+		answer3.innerHTML = "C. " + a3Array[q];
+		answer4.innerHTML = "D. " + a4Array[q];
 	}
 })
 
@@ -129,49 +132,49 @@ answer4.addEventListener("click", function(event){
 //
 
 
-var questionArray = ["What is three plus three?", "Is the earth tilted?"]
-var a1Array = ["3", "Yes"]
-var a2Array = ["6", "No"]
-var a3Array = ["4", "Maybe"]
-var a4Array = ["9", "Sometimes"]
-var correctAnswer = ["6", "Yes"]
+var questionArray = ["Ordinary table salt is sodium chloride. What is baking soda?", "Plants receive their nutrients mainly from", "Plants have __________ while animals lack it.", "On which of the following did Gregor Mendel perform his famous experiment?"]
+var a1Array = ["Potassium chloride", "Clorophyll.", "Starch", "Corn"]
+var a2Array = ["Potassium carbonate", "The atmosphere.", "Cellulose", "Maize"]
+var a3Array = ["Potassium hydroxide", "Soil", "Protein", "Pea"]
+var a4Array = ["Sodium bicarbonate", "Light", "Fat", "Wheat"]
+var correctAnswer = ["Sodium bicarbonate", "Soil", "Cellulose", "Pea"]
 
 
 var picture = {
 	rectangle: function(){
-		ctx.fillStyle = "#DCE9E9"
+		ctx.fillStyle = "#D3E8D3"
 		ctx.fillRect(100, 100, 300, 300)
 	},
 	circle: function(){
 		ctx.arc(400, 200, 150, 0, Math.PI*2, true);
-		ctx.fillStyle = "#DCE9E9"
+		ctx.fillStyle = "#D3E8D3"
 		ctx.fill()
 		ctx.beginPath()
 	},
 	bunny: function(){
 		//tail
 		ctx.arc(195, 380, 60, 0, Math.PI*2, true);
-		ctx.fillStyle = "#DCE9E9"
+		ctx.fillStyle = "#D3E8D3"
 		ctx.fill();
 		ctx.beginPath();
 		//body
 		ctx.ellipse(290, 340, 100, 120, 40 * Math.PI/150, 0, 2 * Math.PI)
-		ctx.fillStyle = "#DCE9E9"
+		ctx.fillStyle = "#D3E8D3"
 		ctx.fill();
 		ctx.beginPath();
 		//head
 		ctx.ellipse(370, 240, 85, 55, 45 * Math.PI/150, 0, 2 * Math.PI)
-		ctx.fillStyle = "#DCE9E9"
+		ctx.fillStyle = "#D3E8D3"
 		ctx.fill();
 		ctx.beginPath();
 		//ear1
 		ctx.ellipse(330, 150, 95, 30, 45 * Math.PI/105, 0, 2 * Math.PI)
-		ctx.fillStyle = "#DCE9E9"
+		ctx.fillStyle = "#D3E8D3"
 		ctx.fill();
 		ctx.beginPath();
 		//ear2
 		ctx.ellipse(310, 155, 92, 28, 45 * Math.PI/170, 0, 2 * Math.PI)
-		ctx.fillStyle = "#DCE9E9"
+		ctx.fillStyle = "#D3E8D3"
 		ctx.fill();
 		ctx.beginPath();
 	}
