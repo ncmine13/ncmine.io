@@ -177,3 +177,17 @@ var bunny = function(){
 		}
 	}
 	}
+
+var flower = function(){
+	for(i=0; i<200; i++) {
+		ctx.beginPath()
+		ctx.rect(400, 200, 40, 300)
+		ctx.moveTo(415, 205)
+		ctx.ellipse(415, 205, 50, 50, 45 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.ellipse(415, 205, 30, 120, 60 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.ellipse(415, 205, 30, 120, 50 * Math.PI/65, 0, 2 * Math.PI)
+		ctx.ellipse(415, 205, 30, 120, 48 * Math.PI/43, 0, 2 * Math.PI)
+
+	}
+
+}
