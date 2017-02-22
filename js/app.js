@@ -15,6 +15,8 @@ var answer2 = document.getElementsByTagName("li")[1];
 var answer3 = document.getElementsByTagName("li")[2];
 var answer4 = document.getElementsByTagName("li")[3];
 var hidden = document.getElementsByClassName("hidden");
+var inputField = document.getElementsByClassName("guessPic")[0];
+var submitGuess = document.getElementsByClassName("guessPic")[1];
 
 
 var game = {
@@ -58,7 +60,7 @@ var game = {
 		}
 	}
 
-
+//Question Logic
 	var listItems = document.getElementsByTagName("li");
 	var questionh1 = document.getElementsByClassName("questionHeading")
 
@@ -69,9 +71,6 @@ var game = {
 		game.trivCounter++;
 		count = game.trivCounter -1
 		questionHeading.innerHTML = questionArray[count].question;
-
-		//the question is questionArray[trivCounter]
-
 		for(i=0; i<listItems.length; i++) {
 			listItems[i].innerHTML = questionArray[count].answers[i];
 			listItems[i].addEventListener('click', function() {
@@ -79,7 +78,6 @@ var game = {
 					console.log("yaaas");
 					game.restOpacity();
 					game.drawCircles();
-
 				} else {
 					console.log("nooo");
 				}
@@ -107,16 +105,6 @@ var game = {
 	var questionFour = new QuestionCreator("Ordinary table salt is sodium chloride. What is baking soda?", "D: Sodium bicarbonate", ["A: Potassium chloride", "B: Potassium carbonate", "C: Potassium hydroxide", "D: Sodium bicarbonate"])
 	questionArray.push(questionFour);
 
-//when QuestionCreator is called, push the question into an array called questionArray
-
-
-
-// constructor function that pushes the questions into an array
-// {
-// 	answer:
-// 	answerArray:
-// }
-//
 //
 // var questionArray = ["Ordinary table salt is sodium chloride. What is baking soda?", "Plants receive their nutrients mainly from", 	"Plants have __________ while animals lack it.", "On which of the following did Gregor Mendel perform his famous experiment?"]
 //
@@ -130,72 +118,23 @@ var game = {
 //
 // var correctAnswer = ["Sodium bicarbonate", "Soil", "Cellulose", "Pea"]
 //
-// var arrayOfAnswerArrays = [a1Array, a2Array, a3Array, a4Array]
-//
-// var arrayOfLi = [answer1, answer2, answer3, answer4]
-
-// nextQuestion.addEventListener("click", function(event){
-// 	console.log("clicked");
-// 	game.changeOpacity();
-// 	game.showHidden();
-// 	game.trivCounter++;
-// 	for(i=0; i<questionArray.length; i++){
-// 		var q = game.trivCounter - 1;
-// 		questionHeading.innerHTML = questionArray[q];
-// 		answer1.innerHTML = "A. " + a1Array[q];
-// 		answer2.innerHTML = "B. " + a2Array[q];
-// 		answer3.innerHTML = "C. " + a3Array[q];
-// 		answer4.innerHTML = "D. " + a4Array[q];
-// 	}
-// })
-//
 
 
 
-// answer1.addEventListener("click", function(event){
-// 	console.log("weeee");
-// 	var q = game.trivCounter - 1;
-// 	checkAnswer(a1Array, correctAnswer, q)
-// 	// if(a1Array[q] === correctAnswer[q]){
-// 	// 	game.restOpacity();
-// 	// 	game.drawCircles()
-// 	// 	console.log("correct");
-// 	// }
-//
-// })
-//
-// answer2.addEventListener("click", function(event){
-// 	console.log("wooo");
-// 	var q = game.trivCounter - 1;
-// 	checkAnswer(a2Array, correctAnswer, q)
-// })
-//
-// answer3.addEventListener("click", function(event){
-// 	console.log("waaaa");
-// 	var q = game.trivCounter - 1;
-// 	checkAnswer(a3Array, correctAnswer, q)
-// })
-//
-// function checkAnswer(answerArray, userAnswer, questNumber){
-// 	if(answerArray[questNumber] === userAnswer[questNumber]){
-// 		console.log("correct")
-// 		game.restOpacity();
-// 		game.drawCircles();
-// 	} else {
-// 		console.log("not correct")
-// 	}
-// }
-//
-// answer4.addEventListener("click", function(event){
-// 	console.log("wiiii");
-// 	var q = game.trivCounter - 1;
-// 	checkAnswer(a4Array, correctAnswer, q)
-// })
 
-//
+
+
+
+
+//Picture Logic
+
 newPicture.addEventListener("click", function(){
 	console.log("clerked");
-	game.clearCanvas();
+	inputField.style.visibility = "visible";
+	submitGuess.style.visibility = "visible";
+	//have to input something inside of the acceptable array, then will clear canvas and disappear input field
+	//<input type="text" value="type here">
+	//game.clearCanvas();
 	game.picCounter++;
 	var z = game.picCounter;
 	for(i=0; i<picturesArray.length; i++){
