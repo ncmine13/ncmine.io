@@ -15,9 +15,6 @@ var answer3 = document.getElementsByTagName("li")[2];
 var answer4 = document.getElementsByTagName("li")[3];
 var hidden = document.getElementsByClassName("hidden");
 
-// ctx.rect(10, 10, 100, 100);
-// ctx.stroke();
-// console.log(ctx.isPointInPath(10, 10));
 
 var game = {
 	score: 0,
@@ -30,12 +27,11 @@ var game = {
 				ctx.fillStyle = "#1D381D";
 				ctx.fill();
 				ctx.beginPath();
+				picture.rectangle();
 			}
-			picture.bunny();
+
 			this.score += 10;
 			scoreCounter.innerHTML = "Points: " + game.score;
-			//picture.rectangle()
-			//circle()
 	},
 	changeOpacity: function(){
 
@@ -63,6 +59,22 @@ var game = {
 }
 
 
+var questionArray = ["Ordinary table salt is sodium chloride. What is baking soda?", "Plants receive their nutrients mainly from", 	"Plants have __________ while animals lack it.", "On which of the following did Gregor Mendel perform his famous experiment?"]
+
+var a1Array = ["Potassium chloride", "Clorophyll.", "Starch", "Corn"]
+
+var a2Array = ["Potassium carbonate", "The atmosphere.", "Cellulose", "Maize"]
+
+var a3Array = ["Potassium hydroxide", "Soil", "Protein", "Pea"]
+
+var a4Array = ["Sodium bicarbonate", "Light", "Fat", "Wheat"]
+
+var correctAnswer = ["Sodium bicarbonate", "Soil", "Cellulose", "Pea"]
+
+var arrayOfAnswerArrays = [a1Array, a2Array, a3Array, a4Array]
+
+var arrayOfLi = [answer1, answer2, answer3, answer4]
+
 nextQuestion.addEventListener("click", function(event){
 	console.log("clicked");
 	game.changeOpacity();
@@ -77,7 +89,6 @@ nextQuestion.addEventListener("click", function(event){
 		answer4.innerHTML = "D. " + a4Array[q];
 	}
 })
-
 
 answer1.addEventListener("click", function(event){
 	console.log("weeee");
@@ -120,25 +131,11 @@ answer4.addEventListener("click", function(event){
 	if(a4Array[q] === correctAnswer[q]){
 		console.log("correct")
 		game.restOpacity();
-		game.drawCircles()
+		game.drawCircles();
 	} else {
 		console.log("not correct")
 	}
 })
-//add event listener for each answer
-//function for correct answerQ
-//function for incorrect answer
-//if correct answer and answer line up upon click, run "game.restOpacity" and "game.drawCircles"
-//
-
-
-var questionArray = ["Ordinary table salt is sodium chloride. What is baking soda?", "Plants receive their nutrients mainly from", "Plants have __________ while animals lack it.", "On which of the following did Gregor Mendel perform his famous experiment?"]
-var a1Array = ["Potassium chloride", "Clorophyll.", "Starch", "Corn"]
-var a2Array = ["Potassium carbonate", "The atmosphere.", "Cellulose", "Maize"]
-var a3Array = ["Potassium hydroxide", "Soil", "Protein", "Pea"]
-var a4Array = ["Sodium bicarbonate", "Light", "Fat", "Wheat"]
-var correctAnswer = ["Sodium bicarbonate", "Soil", "Cellulose", "Pea"]
-
 
 var picture = {
 	rectangle: function(){
@@ -150,72 +147,33 @@ var picture = {
 		ctx.fillStyle = "#D3E8D3"
 		ctx.fill()
 		ctx.beginPath()
-	},
-	bunny: function(){
-		//tail
-		ctx.arc(195, 380, 60, 0, Math.PI*2, true);
-		ctx.fillStyle = "#D3E8D3"
-		ctx.fill();
-		ctx.beginPath();
-		//body
-		ctx.ellipse(290, 340, 100, 120, 40 * Math.PI/150, 0, 2 * Math.PI)
-		ctx.fillStyle = "#D3E8D3"
-		ctx.fill();
-		ctx.beginPath();
-		//head
-		ctx.ellipse(370, 240, 85, 55, 45 * Math.PI/150, 0, 2 * Math.PI)
-		ctx.fillStyle = "#D3E8D3"
-		ctx.fill();
-		ctx.beginPath();
-		//ear1
-		ctx.ellipse(330, 150, 95, 30, 45 * Math.PI/105, 0, 2 * Math.PI)
-		ctx.fillStyle = "#D3E8D3"
-		ctx.fill();
-		ctx.beginPath();
-		//ear2
-		ctx.ellipse(310, 155, 92, 28, 45 * Math.PI/170, 0, 2 * Math.PI)
-		ctx.fillStyle = "#D3E8D3"
-		ctx.fill();
-		ctx.beginPath();
 	}
-
 }
-var pictureArray = [picture.rectangle(), picture.circle(), picture.bunny()]
 
-
-
-
-
-
-// var scoreCount = document.getElementsByClassName("score")
-// var score = {
-// 	points: 0,
-// 	guessPic: function(){
-//
-// 	},
-// 	answerQCorrectly: function(){
-// 		if(drawCircles()){
-// 			scoreCount.innerHTML += 10
-// 		}
-// 	}
-// }
-
-
-// var answerQ =
-// //if(correct answer is chosen) {
-// 	//return opacity to how it was and gain points
-	//drawCircles();
-// } else {
-	//lose points
-	//run "guess again" prompt
-//}
-
-
-//I want at least 5 or 6 images to construct and i need about 10 questions per picture
-//store in objects to organize code
-
-//next step: figure out how to draw more complicated things in canvas
-//list: bunny,
-
-
-//have a function for each of these shapes/pictures, and give it a background-color that is the same as the canvas's background color. Embed this function in the draw circles function
+var bunny = function(){
+	for(i=0; i<200; i++) {
+		ctx.beginPath();
+		ctx.ellipse(195, 380, 60, 60, 45 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.moveTo(290, 340);
+		ctx.ellipse(290, 340, 100, 120, 40 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.moveTo(370, 240)
+		ctx.ellipse(370, 240, 85, 55, 45 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.moveTo(330, 150)
+		ctx.ellipse(330, 150, 95, 30, 45 * Math.PI/105, 0, 2 * Math.PI)
+		ctx.moveTo(310, 155)
+		ctx.ellipse(310, 155, 92, 28, 45 * Math.PI/170, 0, 2 * Math.PI)
+		var cordx = Math.random()*600;
+		var cordy = Math.random()*600;
+		if(ctx.isPointInPath(cordx, cordy)){
+				ctx.beginPath()
+				ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
+				ctx.fillStyle = "#D3E8D3"
+				ctx.fill();
+		} else {
+				ctx.beginPath()
+				ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
+				ctx.fillStyle = "#091b38"
+				ctx.fill();
+		}
+	}
+	}
