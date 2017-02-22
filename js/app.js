@@ -21,20 +21,46 @@ var game = {
 	score: 0,
 	trivCounter: 0,
 	picCounter: 0,
-	drawCircles: function(){
-			for(i=0; i<100; i++){
-				var cordx = Math.random()*900;
+	drawCircles: function() {
+		console.log("lala")
+		for(i=0; i<picturesArray.length; i++) {
+			var z = game.picCounter;
+			var pic = picturesArray[z];
+			for(i=0; i<200; i++){
+				pic()//how do i specify to plug in code without calling function yet?
+				var cordx = Math.random()*600;
 				var cordy = Math.random()*600;
-				ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
-				ctx.fillStyle = "#1D381D";
-				ctx.fill();
-				ctx.beginPath();
-				picture.rectangle();
+				if(ctx.isPointInPath(cordx, cordy)){
+						ctx.beginPath()
+						ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
+						ctx.fillStyle = "#D3E8D3"
+						ctx.fill();
+				} else {
+						ctx.beginPath()
+						ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
+						ctx.fillStyle = "#091b38"
+						ctx.fill();
+					}
 			}
+		}
+
 
 			this.score += 10;
 			scoreCounter.innerHTML = "Points: " + game.score;
-	},
+		},
+	// drawCircles: function(){
+	// 		for(i=0; i<100; i++){
+	// 			var cordx = Math.random()*900;
+	// 			var cordy = Math.random()*600;
+	// 			ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
+	// 			ctx.fillStyle = "#1D381D";
+	// 			ctx.fill();
+	// 			ctx.beginPath();
+	// 			picture.rectangle();
+	// 		}
+	//
+
+	// },
 	changeOpacity: function(){
 
 		for(i=0; i<decrOpacity.length; i++){
@@ -97,12 +123,10 @@ nextQuestion.addEventListener("click", function(event){
 newPicture.addEventListener("click", function(){
 	console.log("clerked");
 	game.picCounter++;
-	var z = game.picCounter - 1;
+	var z = game.picCounter;
 	for(i=0; i<picturesArray.length; i++){
-		z++
+		z++;
 	}
-
-
 })
 
 answer1.addEventListener("click", function(event){
@@ -151,22 +175,21 @@ answer4.addEventListener("click", function(event){
 		console.log("not correct")
 	}
 })
-
-var picture = {
-	rectangle: function(){
-		ctx.fillStyle = "#D3E8D3"
-		ctx.fillRect(100, 100, 300, 300)
-	},
-	circle: function(){
-		ctx.arc(400, 200, 150, 0, Math.PI*2, true);
-		ctx.fillStyle = "#D3E8D3"
-		ctx.fill()
-		ctx.beginPath()
-	}
-}
+//
+// var picture = {
+// 	rectangle: function(){
+// 		ctx.fillStyle = "#D3E8D3"
+// 		ctx.fillRect(100, 100, 300, 300)
+// 	},
+// 	circle: function(){
+// 		ctx.arc(400, 200, 150, 0, Math.PI*2, true);
+// 		ctx.fillStyle = "#D3E8D3"
+// 		ctx.fill()
+// 		ctx.beginPath()
+// 	}
+// }
 //
 var bunny = function(){
-	for(i=0; i<200; i++) {
 		ctx.beginPath();
 		ctx.ellipse(195, 380, 60, 60, 45 * Math.PI/150, 0, 2 * Math.PI)
 		ctx.moveTo(290, 340);
@@ -177,45 +200,15 @@ var bunny = function(){
 		ctx.ellipse(330, 150, 95, 30, 45 * Math.PI/105, 0, 2 * Math.PI)
 		ctx.moveTo(310, 155)
 		ctx.ellipse(310, 155, 92, 28, 45 * Math.PI/170, 0, 2 * Math.PI)
-		var cordx = Math.random()*600;
-		var cordy = Math.random()*600;
-		if(ctx.isPointInPath(cordx, cordy)){
-				ctx.beginPath()
-				ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
-				ctx.fillStyle = "#D3E8D3"
-				ctx.fill();
-		} else {
-				ctx.beginPath()
-				ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
-				ctx.fillStyle = "#091b38"
-				ctx.fill();
-			}
-		}
 	}
 
-	var rect = function(){
-		for(i=0; i<50; i++){
+var rect = function(){
 			ctx.beginPath();
 			ctx.rect(100, 100, 200, 200);
-			var cordx = Math.random()*600;
-			var cordy = Math.random()*600;
-			if(ctx.isPointInPath(cordx, cordy)){
-					ctx.beginPath()
-					ctx.arc(cordx, cordy, 10, 0, Math.PI * 2, true);
-					ctx.fillStyle = "green"
-					ctx.fill();
-			} else {
-					ctx.beginPath()
-					ctx.arc(cordx, cordy, 10, 0, Math.PI * 2, true);
-					ctx.fillStyle = "blue"
-					ctx.fill();
-			}
-
-		}
 	}
 
+
 var flower = function(){
-	for(i=0; i<200; i++) {
 		ctx.beginPath()
 		ctx.rect(400, 200, 40, 300)
 		ctx.moveTo(415, 205)
@@ -223,22 +216,7 @@ var flower = function(){
 		ctx.ellipse(415, 205, 30, 120, 60 * Math.PI/150, 0, 2 * Math.PI)
 		ctx.ellipse(415, 205, 30, 120, 50 * Math.PI/65, 0, 2 * Math.PI)
 		ctx.ellipse(415, 205, 30, 120, 48 * Math.PI/43, 0, 2 * Math.PI)
-		var cordx = Math.random()*600;
-		var cordy = Math.random()*600;
-		if(ctx.isPointInPath(cordx, cordy)){
-				ctx.beginPath()
-				ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
-				ctx.fillStyle = "#D3E8D3"
-				ctx.fill();
-		} else {
-				ctx.beginPath()
-				ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
-				ctx.fillStyle = "#091b38"
-				ctx.fill();
-		}
-
-	}
-
-
 }
+
+
 var picturesArray = [bunny, rect, flower]
