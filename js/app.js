@@ -47,57 +47,152 @@ var game = {
 			hidden[i].style.visibility = "visible";
 		}
 	},
-	
+
 	restOpacity: function(){
 		for(i=0; i<decrOpacity.length; i++){
 			decrOpacity[i].style.opacity = "1";
 		}
 		for(i=0; i<hidden.length; i++){
 			hidden[i].style.visibility = "hidden"
+			}
 		}
 	}
-}
+
+
+	var listItems = document.getElementsByTagName("li");
+	var questionh1 = document.getElementsByClassName("questionHeading")
+
+	nextQuestion.addEventListener("click", function(event){
+		console.log("clicked");
+		game.changeOpacity();
+		game.showHidden();
+		game.trivCounter++;
+		count = game.trivCounter -1
+		questionHeading.innerHTML = questionArray[count].question;
+
+		//the question is questionArray[trivCounter]
+
+		for(i=0; i<listItems.length; i++) {
+			listItems[i].innerHTML = questionArray[count].answers[i];
+			listItems[i].addEventListener('click', function() {
+				if(this.innerHTML === questionArray[count].correctAnswer) {
+					console.log("yaaas");
+					game.restOpacity();
+					game.drawCircles();
+
+				} else {
+					console.log("nooo");
+				}
+			});
+		}
+
+	})
+
+	function QuestionCreator(question, correctAnswer, answers){
+		this.question = question || "";
+		this.correctAnswer = correctAnswer || "";
+		this.answers = answers || [];
+	}
+	var questionArray = []
+
+	var questionOne = new QuestionCreator("How do you tune a fish?", "D: You don't.", ["A: Don't ask me that.", "B: Who cares?", "C: How do YOU tune a fish?", "D: You don't."])
+	questionArray.push(questionOne);
+
+	var questionTwo = new QuestionCreator("How many years will you live?", "A: Are you ever truly living?", ["A: Are you ever truly living?", "B: Two more, then you're done.", "C: 17.", "D: 115."])
+	questionArray.push(questionTwo);
+
+	var questionThree = new QuestionCreator("Do you love your parents?", "C: Yes, when they let me spread my wings and fly.", ["A: No.", "B: Gross, cooties.", "C: Yes, when they let me spread my wings and fly.", "D: They are my best friends!"])
+	questionArray.push(questionThree);
+
+	var questionFour = new QuestionCreator("Ordinary table salt is sodium chloride. What is baking soda?", "D: Sodium bicarbonate", ["A: Potassium chloride", "B: Potassium carbonate", "C: Potassium hydroxide", "D: Sodium bicarbonate"])
+	questionArray.push(questionFour);
+
+//when QuestionCreator is called, push the question into an array called questionArray
+
+
 
 // constructor function that pushes the questions into an array
 // {
 // 	answer:
 // 	answerArray:
 // }
+//
+//
+// var questionArray = ["Ordinary table salt is sodium chloride. What is baking soda?", "Plants receive their nutrients mainly from", 	"Plants have __________ while animals lack it.", "On which of the following did Gregor Mendel perform his famous experiment?"]
+//
+// var a1Array = ["Potassium chloride", "Clorophyll.", "Starch", "Corn"]
+//
+// var a2Array = ["Potassium carbonate", "The atmosphere.", "Cellulose", "Maize"]
+//
+// var a3Array = ["Potassium hydroxide", "Soil", "Protein", "Pea"]
+//
+// var a4Array = ["Sodium bicarbonate", "Light", "Fat", "Wheat"]
+//
+// var correctAnswer = ["Sodium bicarbonate", "Soil", "Cellulose", "Pea"]
+//
+// var arrayOfAnswerArrays = [a1Array, a2Array, a3Array, a4Array]
+//
+// var arrayOfLi = [answer1, answer2, answer3, answer4]
+
+// nextQuestion.addEventListener("click", function(event){
+// 	console.log("clicked");
+// 	game.changeOpacity();
+// 	game.showHidden();
+// 	game.trivCounter++;
+// 	for(i=0; i<questionArray.length; i++){
+// 		var q = game.trivCounter - 1;
+// 		questionHeading.innerHTML = questionArray[q];
+// 		answer1.innerHTML = "A. " + a1Array[q];
+// 		answer2.innerHTML = "B. " + a2Array[q];
+// 		answer3.innerHTML = "C. " + a3Array[q];
+// 		answer4.innerHTML = "D. " + a4Array[q];
+// 	}
+// })
+//
 
 
-var questionArray = ["Ordinary table salt is sodium chloride. What is baking soda?", "Plants receive their nutrients mainly from", 	"Plants have __________ while animals lack it.", "On which of the following did Gregor Mendel perform his famous experiment?"]
 
-var a1Array = ["Potassium chloride", "Clorophyll.", "Starch", "Corn"]
+// answer1.addEventListener("click", function(event){
+// 	console.log("weeee");
+// 	var q = game.trivCounter - 1;
+// 	checkAnswer(a1Array, correctAnswer, q)
+// 	// if(a1Array[q] === correctAnswer[q]){
+// 	// 	game.restOpacity();
+// 	// 	game.drawCircles()
+// 	// 	console.log("correct");
+// 	// }
+//
+// })
+//
+// answer2.addEventListener("click", function(event){
+// 	console.log("wooo");
+// 	var q = game.trivCounter - 1;
+// 	checkAnswer(a2Array, correctAnswer, q)
+// })
+//
+// answer3.addEventListener("click", function(event){
+// 	console.log("waaaa");
+// 	var q = game.trivCounter - 1;
+// 	checkAnswer(a3Array, correctAnswer, q)
+// })
+//
+// function checkAnswer(answerArray, userAnswer, questNumber){
+// 	if(answerArray[questNumber] === userAnswer[questNumber]){
+// 		console.log("correct")
+// 		game.restOpacity();
+// 		game.drawCircles();
+// 	} else {
+// 		console.log("not correct")
+// 	}
+// }
+//
+// answer4.addEventListener("click", function(event){
+// 	console.log("wiiii");
+// 	var q = game.trivCounter - 1;
+// 	checkAnswer(a4Array, correctAnswer, q)
+// })
 
-var a2Array = ["Potassium carbonate", "The atmosphere.", "Cellulose", "Maize"]
-
-var a3Array = ["Potassium hydroxide", "Soil", "Protein", "Pea"]
-
-var a4Array = ["Sodium bicarbonate", "Light", "Fat", "Wheat"]
-
-var correctAnswer = ["Sodium bicarbonate", "Soil", "Cellulose", "Pea"]
-
-var arrayOfAnswerArrays = [a1Array, a2Array, a3Array, a4Array]
-
-var arrayOfLi = [answer1, answer2, answer3, answer4]
-
-nextQuestion.addEventListener("click", function(event){
-	console.log("clicked");
-	game.changeOpacity();
-	game.showHidden();
-	game.trivCounter++;
-	for(i=0; i<questionArray.length; i++){
-		var q = game.trivCounter - 1;
-		questionHeading.innerHTML = questionArray[q];
-		answer1.innerHTML = "A. " + a1Array[q];
-		answer2.innerHTML = "B. " + a2Array[q];
-		answer3.innerHTML = "C. " + a3Array[q];
-		answer4.innerHTML = "D. " + a4Array[q];
-	}
-})
-
-
-
+//
 newPicture.addEventListener("click", function(){
 	console.log("clerked");
 	game.clearCanvas();
@@ -108,59 +203,6 @@ newPicture.addEventListener("click", function(){
 	}
 })
 
-answer1.addEventListener("click", function(event){
-	console.log("weeee");
-	var q = game.trivCounter - 1;
-	checkAnswer(a1Array, correctAnswer, q)
-	// if(a1Array[q] === correctAnswer[q]){
-	// 	game.restOpacity();
-	// 	game.drawCircles()
-	// 	console.log("correct");
-	// }
-
-})
-
-answer2.addEventListener("click", function(event){
-	console.log("wooo");
-	var q = game.trivCounter - 1;
-	checkAnswer(a2Array, correctAnswer, q)
-})
-
-answer3.addEventListener("click", function(event){
-	console.log("waaaa");
-	var q = game.trivCounter - 1;
-	checkAnswer(a3Array, correctAnswer, q)
-})
-
-function checkAnswer(answerArray, userAnswer, questNumber){
-	if(answerArray[questNumber] === userAnswer[questNumber]){
-		console.log("correct")
-		game.restOpacity();
-		game.drawCircles();
-	} else {
-		console.log("not correct")
-	}
-}
-
-answer4.addEventListener("click", function(event){
-	console.log("wiiii");
-	var q = game.trivCounter - 1;
-	checkAnswer(a4Array, correctAnswer, q)
-})
-//
-// var picture = {
-// 	rectangle: function(){
-// 		ctx.fillStyle = "#D3E8D3"
-// 		ctx.fillRect(100, 100, 300, 300)
-// 	},
-// 	circle: function(){
-// 		ctx.arc(400, 200, 150, 0, Math.PI*2, true);
-// 		ctx.fillStyle = "#D3E8D3"
-// 		ctx.fill()
-// 		ctx.beginPath()
-// 	}
-// }
-//
 var bunny = function(){
 	for(i=0; i<200; i++){
 	ctx.beginPath();
