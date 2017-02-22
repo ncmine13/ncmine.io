@@ -21,58 +21,33 @@ var game = {
 	score: 0,
 	trivCounter: 0,
 	picCounter: 0,
+	clearCanvas: function(){
+		ctx.clearRect(0, 0, canvas.width, canvas.height)
+	},
+
+
 	drawCircles: function() {
-		console.log("lala")
-		for(i=0; i<picturesArray.length; i++) {
 			var z = game.picCounter;
 			var pic = picturesArray[z];
-			for(i=0; i<200; i++){
-				pic()//how do i specify to plug in code without calling function yet?
-				var cordx = Math.random()*600;
-				var cordy = Math.random()*600;
-				if(ctx.isPointInPath(cordx, cordy)){
-						ctx.beginPath()
-						ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
-						ctx.fillStyle = "#D3E8D3"
-						ctx.fill();
-				} else {
-						ctx.beginPath()
-						ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
-						ctx.fillStyle = "#091b38"
-						ctx.fill();
-					}
-			}
-		}
-
-
+			pic();
 			this.score += 10;
 			scoreCounter.innerHTML = "Points: " + game.score;
-		},
-	// drawCircles: function(){
-	// 		for(i=0; i<100; i++){
-	// 			var cordx = Math.random()*900;
-	// 			var cordy = Math.random()*600;
-	// 			ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
-	// 			ctx.fillStyle = "#1D381D";
-	// 			ctx.fill();
-	// 			ctx.beginPath();
-	// 			picture.rectangle();
-	// 		}
-	//
+	},
 
-	// },
 	changeOpacity: function(){
 
 		for(i=0; i<decrOpacity.length; i++){
 			decrOpacity[i].style.opacity = "0.3";
 		}
 	},
+
 	showHidden: function(){
 
 		for(i=0; i<hidden.length; i++){
 			hidden[i].style.visibility = "visible";
 		}
 	},
+	
 	restOpacity: function(){
 		for(i=0; i<decrOpacity.length; i++){
 			decrOpacity[i].style.opacity = "1";
@@ -80,11 +55,14 @@ var game = {
 		for(i=0; i<hidden.length; i++){
 			hidden[i].style.visibility = "hidden"
 		}
-	},
-	nextQ: function(){
-
 	}
 }
+
+// constructor function that pushes the questions into an array
+// {
+// 	answer:
+// 	answerArray:
+// }
 
 
 var questionArray = ["Ordinary table salt is sodium chloride. What is baking soda?", "Plants receive their nutrients mainly from", 	"Plants have __________ while animals lack it.", "On which of the following did Gregor Mendel perform his famous experiment?"]
@@ -122,6 +100,7 @@ nextQuestion.addEventListener("click", function(event){
 
 newPicture.addEventListener("click", function(){
 	console.log("clerked");
+	game.clearCanvas();
 	game.picCounter++;
 	var z = game.picCounter;
 	for(i=0; i<picturesArray.length; i++){
@@ -132,48 +111,41 @@ newPicture.addEventListener("click", function(){
 answer1.addEventListener("click", function(event){
 	console.log("weeee");
 	var q = game.trivCounter - 1;
-	if(a1Array[q] === correctAnswer[q]){
-		game.restOpacity();
-		game.drawCircles()
-		console.log("correct");
-	}
+	checkAnswer(a1Array, correctAnswer, q)
+	// if(a1Array[q] === correctAnswer[q]){
+	// 	game.restOpacity();
+	// 	game.drawCircles()
+	// 	console.log("correct");
+	// }
 
 })
 
 answer2.addEventListener("click", function(event){
 	console.log("wooo");
 	var q = game.trivCounter - 1;
-	if(a2Array[q] === correctAnswer[q]){
-		console.log("correct")
-		game.restOpacity();
-		game.drawCircles()
-	} else {
-		console.log("not correct")
-	}
+	checkAnswer(a2Array, correctAnswer, q)
 })
 
 answer3.addEventListener("click", function(event){
 	console.log("waaaa");
 	var q = game.trivCounter - 1;
-	if(a3Array[q] === correctAnswer[q]){
-		console.log("correct")
-		game.restOpacity();
-		game.drawCircles()
-	} else {
-		console.log("not correct")
-	}
+	checkAnswer(a3Array, correctAnswer, q)
 })
 
-answer4.addEventListener("click", function(event){
-	console.log("wiiii");
-	var q = game.trivCounter - 1;
-	if(a4Array[q] === correctAnswer[q]){
+function checkAnswer(answerArray, userAnswer, questNumber){
+	if(answerArray[questNumber] === userAnswer[questNumber]){
 		console.log("correct")
 		game.restOpacity();
 		game.drawCircles();
 	} else {
 		console.log("not correct")
 	}
+}
+
+answer4.addEventListener("click", function(event){
+	console.log("wiiii");
+	var q = game.trivCounter - 1;
+	checkAnswer(a4Array, correctAnswer, q)
 })
 //
 // var picture = {
@@ -190,25 +162,31 @@ answer4.addEventListener("click", function(event){
 // }
 //
 var bunny = function(){
-		ctx.beginPath();
-		ctx.ellipse(195, 380, 60, 60, 45 * Math.PI/150, 0, 2 * Math.PI)
-		ctx.moveTo(290, 340);
-		ctx.ellipse(290, 340, 100, 120, 40 * Math.PI/150, 0, 2 * Math.PI)
-		ctx.moveTo(370, 240)
-		ctx.ellipse(370, 240, 85, 55, 45 * Math.PI/150, 0, 2 * Math.PI)
-		ctx.moveTo(330, 150)
-		ctx.ellipse(330, 150, 95, 30, 45 * Math.PI/105, 0, 2 * Math.PI)
-		ctx.moveTo(310, 155)
-		ctx.ellipse(310, 155, 92, 28, 45 * Math.PI/170, 0, 2 * Math.PI)
+	for(i=0; i<200; i++){
+	ctx.beginPath();
+	ctx.ellipse(195, 380, 60, 60, 45 * Math.PI/150, 0, 2 * Math.PI)
+	ctx.moveTo(290, 340);
+	ctx.ellipse(290, 340, 100, 120, 40 * Math.PI/150, 0, 2 * Math.PI)
+	ctx.moveTo(370, 240)
+	ctx.ellipse(370, 240, 85, 55, 45 * Math.PI/150, 0, 2 * Math.PI)
+	ctx.moveTo(330, 150)
+	ctx.ellipse(330, 150, 95, 30, 45 * Math.PI/105, 0, 2 * Math.PI)
+	ctx.moveTo(310, 155)
+	ctx.ellipse(310, 155, 92, 28, 45 * Math.PI/170, 0, 2 * Math.PI)
+	checkk()
 	}
+}
 
 var rect = function(){
+	for(i=0; i<200; i++){
 			ctx.beginPath();
 			ctx.rect(100, 100, 200, 200);
+			checkk()
 	}
-
+}
 
 var flower = function(){
+	for(i=0; i<200; i++){
 		ctx.beginPath()
 		ctx.rect(400, 200, 40, 300)
 		ctx.moveTo(415, 205)
@@ -216,6 +194,24 @@ var flower = function(){
 		ctx.ellipse(415, 205, 30, 120, 60 * Math.PI/150, 0, 2 * Math.PI)
 		ctx.ellipse(415, 205, 30, 120, 50 * Math.PI/65, 0, 2 * Math.PI)
 		ctx.ellipse(415, 205, 30, 120, 48 * Math.PI/43, 0, 2 * Math.PI)
+		checkk()
+	}
+}
+
+var checkk = function(){
+	var cordx = Math.random()*600;
+	var cordy = Math.random()*600;
+	if(ctx.isPointInPath(cordx, cordy)){
+			ctx.beginPath()
+			ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
+			ctx.fillStyle = "red"
+			ctx.fill();
+	} else {
+			ctx.beginPath()
+			ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
+			ctx.fillStyle = "#091b38"
+			ctx.fill();
+		}
 }
 
 
