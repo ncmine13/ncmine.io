@@ -8,6 +8,7 @@ var score = document.getElementsByClassName("score");
 var decrOpacity = document.getElementsByClassName("lessOpaque");
 var hidden = document.getElementsByClassName("hidden");
 var nextQuestion = document.getElementById("nextQ-btn")
+var newPicture = document.getElementById("identPic-btn")
 var questionHeading = document.getElementsByTagName("h1")[1];
 var answer1 = document.getElementsByTagName("li")[0];
 var answer2 = document.getElementsByTagName("li")[1];
@@ -18,7 +19,8 @@ var hidden = document.getElementsByClassName("hidden");
 
 var game = {
 	score: 0,
-	counter: 0,
+	trivCounter: 0,
+	picCounter: 0,
 	drawCircles: function(){
 			for(i=0; i<100; i++){
 				var cordx = Math.random()*900;
@@ -79,9 +81,9 @@ nextQuestion.addEventListener("click", function(event){
 	console.log("clicked");
 	game.changeOpacity();
 	game.showHidden();
-	game.counter++;
+	game.trivCounter++;
 	for(i=0; i<questionArray.length; i++){
-		var q = game.counter - 1;
+		var q = game.trivCounter - 1;
 		questionHeading.innerHTML = questionArray[q];
 		answer1.innerHTML = "A. " + a1Array[q];
 		answer2.innerHTML = "B. " + a2Array[q];
@@ -90,9 +92,22 @@ nextQuestion.addEventListener("click", function(event){
 	}
 })
 
+
+
+newPicture.addEventListener("click", function(){
+	console.log("clerked");
+	game.picCounter++;
+	var z = game.picCounter - 1;
+	for(i=0; i<picturesArray.length; i++){
+		z++
+	}
+
+
+})
+
 answer1.addEventListener("click", function(event){
 	console.log("weeee");
-	var q = game.counter - 1;
+	var q = game.trivCounter - 1;
 	if(a1Array[q] === correctAnswer[q]){
 		game.restOpacity();
 		game.drawCircles()
@@ -103,7 +118,7 @@ answer1.addEventListener("click", function(event){
 
 answer2.addEventListener("click", function(event){
 	console.log("wooo");
-	var q = game.counter - 1;
+	var q = game.trivCounter - 1;
 	if(a2Array[q] === correctAnswer[q]){
 		console.log("correct")
 		game.restOpacity();
@@ -115,7 +130,7 @@ answer2.addEventListener("click", function(event){
 
 answer3.addEventListener("click", function(event){
 	console.log("waaaa");
-	var q = game.counter - 1;
+	var q = game.trivCounter - 1;
 	if(a3Array[q] === correctAnswer[q]){
 		console.log("correct")
 		game.restOpacity();
@@ -127,7 +142,7 @@ answer3.addEventListener("click", function(event){
 
 answer4.addEventListener("click", function(event){
 	console.log("wiiii");
-	var q = game.counter - 1;
+	var q = game.trivCounter - 1;
 	if(a4Array[q] === correctAnswer[q]){
 		console.log("correct")
 		game.restOpacity();
@@ -149,7 +164,7 @@ var picture = {
 		ctx.beginPath()
 	}
 }
-
+//
 var bunny = function(){
 	for(i=0; i<200; i++) {
 		ctx.beginPath();
@@ -174,8 +189,29 @@ var bunny = function(){
 				ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
 				ctx.fillStyle = "#091b38"
 				ctx.fill();
+			}
 		}
 	}
+
+	var rect = function(){
+		for(i=0; i<50; i++){
+			ctx.beginPath();
+			ctx.rect(100, 100, 200, 200);
+			var cordx = Math.random()*600;
+			var cordy = Math.random()*600;
+			if(ctx.isPointInPath(cordx, cordy)){
+					ctx.beginPath()
+					ctx.arc(cordx, cordy, 10, 0, Math.PI * 2, true);
+					ctx.fillStyle = "green"
+					ctx.fill();
+			} else {
+					ctx.beginPath()
+					ctx.arc(cordx, cordy, 10, 0, Math.PI * 2, true);
+					ctx.fillStyle = "blue"
+					ctx.fill();
+			}
+
+		}
 	}
 
 var flower = function(){
@@ -187,7 +223,22 @@ var flower = function(){
 		ctx.ellipse(415, 205, 30, 120, 60 * Math.PI/150, 0, 2 * Math.PI)
 		ctx.ellipse(415, 205, 30, 120, 50 * Math.PI/65, 0, 2 * Math.PI)
 		ctx.ellipse(415, 205, 30, 120, 48 * Math.PI/43, 0, 2 * Math.PI)
+		var cordx = Math.random()*600;
+		var cordy = Math.random()*600;
+		if(ctx.isPointInPath(cordx, cordy)){
+				ctx.beginPath()
+				ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
+				ctx.fillStyle = "#D3E8D3"
+				ctx.fill();
+		} else {
+				ctx.beginPath()
+				ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
+				ctx.fillStyle = "#091b38"
+				ctx.fill();
+		}
 
 	}
 
+
 }
+var picturesArray = [bunny, rect, flower]
