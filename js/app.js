@@ -2,6 +2,8 @@ console.log("hooked upp")
 
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
+
+
 var scoreCounter = document.getElementsByTagName("h1")[0]
 var body = document.getElementsByTagName("body")[0];
 var score = document.getElementsByClassName("score");
@@ -15,8 +17,7 @@ var answer2 = document.getElementsByTagName("li")[1];
 var answer3 = document.getElementsByTagName("li")[2];
 var answer4 = document.getElementsByTagName("li")[3];
 var hidden = document.getElementsByClassName("hidden");
-var inputField = document.getElementsByClassName("guessPic")[0];
-var submitGuess = document.getElementsByClassName("guessPic")[1];
+
 
 
 var game = {
@@ -39,7 +40,7 @@ var game = {
 	changeOpacity: function(){
 
 		for(i=0; i<decrOpacity.length; i++){
-			decrOpacity[i].style.opacity = "0.3";
+			decrOpacity[i].style.opacity = "0.2";
 		}
 	},
 
@@ -105,24 +106,14 @@ var game = {
 	var questionFour = new QuestionCreator("Ordinary table salt is sodium chloride. What is baking soda?", "D: Sodium bicarbonate", ["A: Potassium chloride", "B: Potassium carbonate", "C: Potassium hydroxide", "D: Sodium bicarbonate"])
 	questionArray.push(questionFour);
 
-//
-// var questionArray = ["Ordinary table salt is sodium chloride. What is baking soda?", "Plants receive their nutrients mainly from", 	"Plants have __________ while animals lack it.", "On which of the following did Gregor Mendel perform his famous experiment?"]
-//
-// var a1Array = ["Potassium chloride", "Clorophyll.", "Starch", "Corn"]
-//
-// var a2Array = ["Potassium carbonate", "The atmosphere.", "Cellulose", "Maize"]
-//
-// var a3Array = ["Potassium hydroxide", "Soil", "Protein", "Pea"]
-//
-// var a4Array = ["Sodium bicarbonate", "Light", "Fat", "Wheat"]
-//
-// var correctAnswer = ["Sodium bicarbonate", "Soil", "Cellulose", "Pea"]
-//
+	var questionFive = new QuestionCreator("Plants receive their nutrients mainly from", "Soil", ["Clorophyll.", "The atmosphere.", "Soil", "Light"])
+	questionArray.push(questionFive);
 
+	var questionSix = new QuestionCreator("Plants have __________ while animals lack it.", "Cellulose", ["Starch", "Cellulose", "Protein", "Fat"])
+	questionArray.push(questionSix);
 
-
-
-
+	var questionSeven = new QuestionCreator("On which of the following did Gregor Mendel perform his famous experiment?", "Pea", ["Corn",  "Maize", "Pea", "Wheat"])
+	questionArray.push(questionSeven);
 
 
 
@@ -134,13 +125,14 @@ newPicture.addEventListener("click", function(){
 	submitGuess.style.visibility = "visible";
 	//have to input something inside of the acceptable array, then will clear canvas and disappear input field
 	//<input type="text" value="type here">
-	//game.clearCanvas();
-	game.picCounter++;
+
+
 	var z = game.picCounter;
 	for(i=0; i<picturesArray.length; i++){
 		z++;
 	}
 })
+
 
 var bunny = function(){
 	for(i=0; i<200; i++){
@@ -180,8 +172,8 @@ var flower = function(){
 }
 
 var checkk = function(){
-	var cordx = Math.random()*600;
-	var cordy = Math.random()*600;
+	var cordx = Math.random()*900;
+	var cordy = Math.random()*900;
 	if(ctx.isPointInPath(cordx, cordy)){
 			ctx.beginPath()
 			ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
@@ -197,3 +189,30 @@ var checkk = function(){
 
 
 var picturesArray = [bunny, rect, flower]
+
+
+var inputField = document.getElementsByClassName("guessPic")[0];
+var submitGuess = document.getElementsByClassName("guessPic")[1];
+var correctPic = function() {
+	inputField.style.visibility = "hidden";
+	submitGuess.style.visibility = "hidden";
+	game.clearCanvas();
+	game.picCounter++;
+}
+
+submitGuess.addEventListener("click", function(event){
+	console.log("cluck")
+	if(game.picCounter === 0){
+		if(inputField.value === "bunny" || inputField.value === "rabbit"){
+			correctPic();
+		} else console.log("nah uh");
+	} else if(game.picCounter === 1) {
+		if(inputField.value === "rectangle" || inputField.value === "square"){
+			correctPic();
+		} else console.log("nah uh");
+	} else if(game.picCounter === 2){
+		if(inputField.value === "flower" || inputField.value === "plant"){
+			correctPic();
+		} else console.log("nah uh");
+	}
+})
