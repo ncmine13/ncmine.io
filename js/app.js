@@ -135,39 +135,49 @@ newPicture.addEventListener("click", function(){
 
 
 var bunny = function(){
-	for(i=0; i<200; i++){
-	ctx.beginPath();
-	ctx.ellipse(195, 380, 60, 60, 45 * Math.PI/150, 0, 2 * Math.PI)
-	ctx.moveTo(290, 340);
-	ctx.ellipse(290, 340, 100, 120, 40 * Math.PI/150, 0, 2 * Math.PI)
-	ctx.moveTo(370, 240)
-	ctx.ellipse(370, 240, 85, 55, 45 * Math.PI/150, 0, 2 * Math.PI)
-	ctx.moveTo(330, 150)
-	ctx.ellipse(330, 150, 95, 30, 45 * Math.PI/105, 0, 2 * Math.PI)
-	ctx.moveTo(310, 155)
-	ctx.ellipse(310, 155, 92, 28, 45 * Math.PI/170, 0, 2 * Math.PI)
+	for(i=0; i<300; i++){
+		ctx.beginPath();
+		ctx.ellipse(175, 390, 45, 55, 65 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.moveTo(290, 340);
+		ctx.ellipse(290, 340, 100, 130, 40 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.moveTo(370, 400)
+		ctx.ellipse(350, 400, 60, 30, 40 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.moveTo(379, 430)
+		ctx.ellipse(377, 430, 23, 30, 85 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.moveTo(380, 240)
+		ctx.ellipse(380, 240, 95, 60, 45 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.moveTo(330, 150)
+		ctx.ellipse(330, 150, 135, 33, 70 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.moveTo(310, 155)
+		ctx.ellipse(310, 155, 132, 31, 45 * Math.PI/150, 0, 2 * Math.PI)
 	checkk()
 	}
 }
 
 var rect = function(){
-	for(i=0; i<200; i++){
+	for(i=0; i<300; i++){
 			ctx.beginPath();
 			ctx.rect(100, 100, 200, 200);
-			checkk()
+			ctx.fill()
+			// checkk()
 	}
 }
 
 var flower = function(){
-	for(i=0; i<200; i++){
+	for(i=0; i<300; i++){
 		ctx.beginPath()
-		ctx.rect(400, 200, 40, 300)
-		ctx.moveTo(415, 205)
-		ctx.ellipse(415, 205, 50, 50, 45 * Math.PI/150, 0, 2 * Math.PI)
-		ctx.ellipse(415, 205, 30, 120, 60 * Math.PI/150, 0, 2 * Math.PI)
-		ctx.ellipse(415, 205, 30, 120, 50 * Math.PI/65, 0, 2 * Math.PI)
-		ctx.ellipse(415, 205, 30, 120, 48 * Math.PI/43, 0, 2 * Math.PI)
-		checkk()
+			ctx.rect(390, 190, 35, 350)
+			ctx.moveTo(440, 445)
+			ctx.ellipse(440, 445, 15, 45, 30 * Math.PI/150, 0, 2 * Math.PI)
+			ctx.moveTo(375, 385)
+			ctx.ellipse(375, 385, 45, 15, 40 * Math.PI/150, 0, 2 * Math.PI)
+			ctx.moveTo(405, 195)
+			ctx.ellipse(405, 195, 60, 60, 45 * Math.PI/150, 0, 2 * Math.PI)
+			ctx.ellipse(405, 195, 45, 160, 60 * Math.PI/130, 0, 2 * Math.PI)
+			ctx.ellipse(405, 195, 45, 160, 50 * Math.PI/63, 0, 2 * Math.PI)
+			ctx.ellipse(405, 195, 45, 160, 48 * Math.PI/41, 0, 2 * Math.PI)
+			ctx.fill()
+		// checkk()
 	}
 }
 
@@ -176,13 +186,13 @@ var checkk = function(){
 	var cordy = Math.random()*900;
 	if(ctx.isPointInPath(cordx, cordy)){
 			ctx.beginPath()
-			ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
-			ctx.fillStyle = "red"
+			ctx.arc(cordx, cordy, 7, 0, Math.PI * 2, true);
+			ctx.fillStyle = "#E47505"
 			ctx.fill();
 	} else {
 			ctx.beginPath()
-			ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
-			ctx.fillStyle = "#091b38"
+			ctx.arc(cordx, cordy, 7, 0, Math.PI * 2, true);
+			ctx.fillStyle = "#354A68"
 			ctx.fill();
 		}
 }
@@ -191,28 +201,34 @@ var checkk = function(){
 var picturesArray = [bunny, rect, flower]
 
 
-var inputField = document.getElementsByClassName("guessPic")[0];
-var submitGuess = document.getElementsByClassName("guessPic")[1];
-var correctPic = function() {
-	inputField.style.visibility = "hidden";
-	submitGuess.style.visibility = "hidden";
-	game.clearCanvas();
-	game.picCounter++;
-}
+// var inputField = document.getElementsByClassName("guessPic")[0];
+// var submitGuess = document.getElementsByClassName("guessPic")[1];
+// var correctPic = function() {
+// 	inputField.style.visibility = "hidden";
+// 	submitGuess.style.visibility = "hidden";
+// 	game.clearCanvas();
+// 	game.picCounter++;
+// }
 
-submitGuess.addEventListener("click", function(event){
-	console.log("cluck")
-	if(game.picCounter === 0){
-		if(inputField.value === "bunny" || inputField.value === "rabbit"){
-			correctPic();
-		} else console.log("nah uh");
-	} else if(game.picCounter === 1) {
-		if(inputField.value === "rectangle" || inputField.value === "square"){
-			correctPic();
-		} else console.log("nah uh");
-	} else if(game.picCounter === 2){
-		if(inputField.value === "flower" || inputField.value === "plant"){
-			correctPic();
-		} else console.log("nah uh");
-	}
-})
+// submitGuess.addEventListener("click", function(event){
+// 	console.log("cluck")
+// 	if(game.picCounter === 0){
+// 		if(inputField.value === "bunny" || inputField.value === "rabbit"){
+// 			correctPic();
+// 			game.score += 100;
+// 			scoreCounter.innerHTML = "Points: " + game.score;
+// 		} else console.log("nah uh");
+// 	} else if(game.picCounter === 1) {
+// 		if(inputField.value === "rectangle" || inputField.value === "square"){
+// 			correctPic();
+// 			game.score += 100;
+// 			scoreCounter.innerHTML = "Points: " + game.score;
+// 		} else console.log("nah uh");
+// 	} else if(game.picCounter === 2){
+// 		if(inputField.value === "flower" || inputField.value === "plant"){
+// 			correctPic();
+// 			game.score += 100;
+// 			scoreCounter.innerHTML = "Points: " + game.score;
+// 		} else console.log("nah uh");
+// 	}
+// })
