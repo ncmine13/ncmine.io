@@ -118,7 +118,7 @@ questionArray.push(questionOne);
 var questionTwo = new QuestionCreator("How many years will you live?", "A: Are you ever truly living?", ["A: Are you ever truly living?", "B: Two more, then you're done.", "C: 17.", "D: 115."])
 questionArray.push(questionTwo);
 
-var questionThree = new QuestionCreator("Potato is a modified form (outgrowth) of", "A: root.", ["A: root.", "B: stem.", "C: leaf.", "D: fruit."])
+var questionThree = new QuestionCreator("Potato is a modified form (outgrowth) of", "B: stem.", ["A: root.", "B: stem.", "C: leaf.", "D: fruit."])
 questionArray.push(questionThree);
 
 var questionFour = new QuestionCreator("Ordinary table salt is sodium chloride. What is baking soda?", "D: Sodium bicarbonate", ["A: Potassium chloride", "B: Potassium carbonate", "C: Potassium hydroxide", "D: Sodium bicarbonate"])
@@ -169,6 +169,15 @@ questionArray.push(questionEighteen)
 var questionNineteen = new QuestionCreator("Botany is the study of ", "D: plants.", ["A: animals.", "B: culture.", "C: arachnids.", "D: plants."])
 questionArray.push(questionNineteen);
 
+var questionTwenty = new QuestionCreator("Which of the following items was owned by the fewest U.S. homes in 1990?", "B: Compact disc player", ["A: Computer", "B: Compact disc player", "C: Cordless phone", "D: Dishwasher"])
+questionArray.push(questionTwenty)
+
+var question21 = new QuestionCreator("Entomology is the science that studies", "B: insects.", ["A: behavior of human beings.", "B: insects.", "C: the origin and history of technical and scientific terms.", "D: the formation of rocks."])
+questionArray.push(question21)
+
+var question22 = new QuestionCreator("In a study of effects of alcohol on driving ability, the control group should be given", "D: no alcohol at all.", ["A: a high dosage of alcohol.", "B: one-half the dosage given the experimental group.", "C: a driving test before and after drinking alcohol.", "D: no alcohol at all."])
+
+var question23 = new QuestionCreator("Which of the following is considered by the text to be a pseudo-psychology?", "D: Astrology", ["A: Cognitive psychology", "B: Behaviorism", "C: Gestalt psychology", "D: Astrology"])
 
 
 
@@ -290,31 +299,31 @@ var picturesArray = [heart, triangle, bunny, flower, rect]
 submitGuess.addEventListener("click", function(event){
 	console.log("cluck")
 	if(game.picCounter === 0){
-		if(inputField.value === "heart" || inputField.value === "love"){
+		if(inputField.value === "heart" || inputField.value === "love" || inputField.value === "Heart"){
 			correctPic();
 			game.score += 100;
 			scoreCounter.innerHTML = "Points: " + game.score;
 		} else console.log("nah uh");
 	} else if(game.picCounter === 1) {
-		if(inputField.value === "triangle"){
+		if(inputField.value === "triangle" || inputField.value === "Triangle"){
 			correctPic();
 			game.score += 100;
 			scoreCounter.innerHTML = "Points: " + game.score;
 		} else console.log("nah uh");
 	} else if(game.picCounter === 2){
-		if(inputField.value === "bunny" || inputField.value === "rabbit"){
+		if(inputField.value === "bunny" || inputField.value === "rabbit" || inputField.value === "Bunny" || inputField.value === "Rabbit"){
 			correctPic();
 			game.score += 100;
 			scoreCounter.innerHTML = "Points: " + game.score;
 		} else console.log("nah uh");
 	} else if(game.picCounter === 3){
-		if(inputField.value === "flower" || inputField.value === "plant"){
+		if(inputField.value === "flower" || inputField.value === "plant" || inputField.value === "Flower" || inputField.value === "Plant"){
 			correctPic();
 			game.score += 100;
 			scoreCounter.innerHTML = "Points: " + game.score;
 		} else console.log("nah uh");
 	} else if(game.picCounter === 4){
-		if(inputField.value === "rectangle" || inputField.value === "square"){
+		if(inputField.value === "rectangle" || inputField.value === "square" || inputField.value === "Rectangle" || inputField.value === "Square"){
 			correctPic();
 			game.score += 100;
 			scoreCounter.innerHTML = "Points: " + game.score;
