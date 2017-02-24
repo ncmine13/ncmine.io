@@ -9,8 +9,8 @@ var body = document.getElementsByTagName("body")[0];
 var score = document.getElementsByClassName("score");
 var decrOpacity = document.getElementsByClassName("lessOpaque");
 var hidden = document.getElementsByClassName("hidden");
-var nextQuestion = document.getElementById("nextQ-btn")
-var newPicture = document.getElementById("identPic-btn")
+var nextQuestion = document.getElementById("nextQ-btn");
+var newPicture = document.getElementById("identPic-btn");
 var questionHeading = document.getElementsByTagName("h1")[1];
 var answer1 = document.getElementsByTagName("li")[0];
 var answer2 = document.getElementsByTagName("li")[1];
@@ -27,7 +27,6 @@ var game = {
 	clearCanvas: function(){
 		ctx.clearRect(0, 0, canvas.width, canvas.height)
 	},
-
 
 	drawCircles: function() {
 			var z = game.picCounter;
@@ -51,69 +50,88 @@ var game = {
 		}
 	},
 
+	addRemoveClass: function(clss, targetSelector){
+		var elements = document.querySelectorAll(targetSelector);
+		for(i=0; i<elements.length; i++){
+			var hasClass = elements[i].classList.contains(clss);
+			console.log(hasClass);
+			if(hasClass){
+				elements[i].classList.remove(clss);
+			} else {
+				elements[i].classList.add(clss);
+			}
+		}
+	},
+
 	restOpacity: function(){
 		for(i=0; i<decrOpacity.length; i++){
 			decrOpacity[i].style.opacity = "1";
 		}
 		for(i=0; i<hidden.length; i++){
-			hidden[i].style.visibility = "hidden"
-			}
+			hidden[i].style.visibility = "hidden";
 		}
 	}
+};
 
 //Question Logic
-	var listItems = document.getElementsByTagName("li");
-	var questionh1 = document.getElementsByClassName("questionHeading")
+var listItems = document.getElementsByTagName("li");
+var questionh1 = document.getElementsByClassName("questionHeading")
 
-	nextQuestion.addEventListener("click", function(event){
-		console.log("clicked");
-		game.changeOpacity();
-		game.showHidden();
-		game.trivCounter++;
-		count = game.trivCounter -1
-		questionHeading.innerHTML = questionArray[count].question;
-		for(i=0; i<listItems.length; i++) {
-			listItems[i].innerHTML = questionArray[count].answers[i];
-			listItems[i].addEventListener('click', function() {
-				if(this.innerHTML === questionArray[count].correctAnswer) {
-					console.log("yaaas");
-					game.restOpacity();
-					game.drawCircles();
-				} else {
-					console.log("nooo");
-				}
-			});
-		}
-
-	})
-
-	function QuestionCreator(question, correctAnswer, answers){
-		this.question = question || "";
-		this.correctAnswer = correctAnswer || "";
-		this.answers = answers || [];
+nextQuestion.addEventListener("click", function(event){
+	console.log("clicked");
+	// game.changeOpacity();
+	// game.showHidden();
+	game.addRemoveClass("hidden", ".visibility-changeable");
+	game.trivCounter++;
+	count = game.trivCounter -1
+	questionHeading.innerHTML = questionArray[count].question;
+	for(i=0; i<listItems.length; i++) {
+		listItems[i].innerHTML = questionArray[count].answers[i];
 	}
-	var questionArray = []
+});
 
-	var questionOne = new QuestionCreator("How do you tune a fish?", "D: You don't.", ["A: Don't ask me that.", "B: Who cares?", "C: How do YOU tune a fish?", "D: You don't."])
-	questionArray.push(questionOne);
+for(i=0; i<listItems.length; i++) {
+	listItems[i].addEventListener('click', function() {
+		console.log('LI CLICKED');
+		if(this.innerHTML === questionArray[count].correctAnswer) {
+			console.log("yaaas");
+			// game.restOpacity();
 
-	var questionTwo = new QuestionCreator("How many years will you live?", "A: Are you ever truly living?", ["A: Are you ever truly living?", "B: Two more, then you're done.", "C: 17.", "D: 115."])
-	questionArray.push(questionTwo);
+			game.drawCircles();
+			game.addRemoveClass("hidden", ".visibility-changeable");
+		} else {
+			console.log("nooo");
+		}
+	});
+}
 
-	var questionThree = new QuestionCreator("Do you love your parents?", "C: Yes, when they let me spread my wings and fly.", ["A: No.", "B: Gross, cooties.", "C: Yes, when they let me spread my wings and fly.", "D: They are my best friends!"])
-	questionArray.push(questionThree);
+function QuestionCreator(question, correctAnswer, answers){
+	this.question = question || "";
+	this.correctAnswer = correctAnswer || "";
+	this.answers = answers || [];
+}
+var questionArray = []
 
-	var questionFour = new QuestionCreator("Ordinary table salt is sodium chloride. What is baking soda?", "D: Sodium bicarbonate", ["A: Potassium chloride", "B: Potassium carbonate", "C: Potassium hydroxide", "D: Sodium bicarbonate"])
-	questionArray.push(questionFour);
+var questionOne = new QuestionCreator("How do you tune a fish?", "D: You don't.", ["A: Don't ask me that.", "B: Who cares?", "C: How do YOU tune a fish?", "D: You don't."])
+questionArray.push(questionOne);
 
-	var questionFive = new QuestionCreator("Plants receive their nutrients mainly from", "Soil", ["Clorophyll.", "The atmosphere.", "Soil", "Light"])
-	questionArray.push(questionFive);
+var questionTwo = new QuestionCreator("How many years will you live?", "A: Are you ever truly living?", ["A: Are you ever truly living?", "B: Two more, then you're done.", "C: 17.", "D: 115."])
+questionArray.push(questionTwo);
 
-	var questionSix = new QuestionCreator("Plants have __________ while animals lack it.", "Cellulose", ["Starch", "Cellulose", "Protein", "Fat"])
-	questionArray.push(questionSix);
+var questionThree = new QuestionCreator("Do you love your parents?", "C: Yes, when they let me spread my wings and fly.", ["A: No.", "B: Gross, cooties.", "C: Yes, when they let me spread my wings and fly.", "D: They are my best friends!"])
+questionArray.push(questionThree);
 
-	var questionSeven = new QuestionCreator("On which of the following did Gregor Mendel perform his famous experiment?", "Pea", ["Corn",  "Maize", "Pea", "Wheat"])
-	questionArray.push(questionSeven);
+var questionFour = new QuestionCreator("Ordinary table salt is sodium chloride. What is baking soda?", "D: Sodium bicarbonate", ["A: Potassium chloride", "B: Potassium carbonate", "C: Potassium hydroxide", "D: Sodium bicarbonate"])
+questionArray.push(questionFour);
+
+var questionFive = new QuestionCreator("Plants receive their nutrients mainly from", "Soil", ["Clorophyll.", "The atmosphere.", "Soil", "Light"])
+questionArray.push(questionFive);
+
+var questionSix = new QuestionCreator("Plants have __________ while animals lack it.", "Cellulose", ["Starch", "Cellulose", "Protein", "Fat"])
+questionArray.push(questionSix);
+
+var questionSeven = new QuestionCreator("On which of the following did Gregor Mendel perform his famous experiment?", "Pea", ["Corn",  "Maize", "Pea", "Wheat"])
+questionArray.push(questionSeven);
 
 
 
@@ -133,6 +151,20 @@ newPicture.addEventListener("click", function(){
 	}
 })
 
+
+// var bird = function(){
+// 	ctx.beginPath();
+// 	ctx.moveTo(550, 320)
+// 	ctx.ellipse(550, 320, 80, 120, 100 * Math.PI/150, 0, 2 * Math.PI)
+// 	ctx.moveTo(535, 325)
+// 	ctx.ellipse(535, 325, 80, 95, 100 * Math.PI/150, 0, 2 * Math.PI)
+// 	ctx.moveTo(475, 235)
+// 	ctx.ellipse(475, 235, 50, 60, 120 * Math.PI/150, 0, 2 * Math.PI)
+// 	ctx.moveTo(475, 190)
+// 	ctx.lineTo(380,240)
+// 	ctx.lineTo(475,260)
+//
+// }
 
 var bunny = function(){
 	for(i=0; i<300; i++){
@@ -158,8 +190,7 @@ var rect = function(){
 	for(i=0; i<300; i++){
 			ctx.beginPath();
 			ctx.rect(100, 100, 200, 200);
-			ctx.fill()
-			// checkk()
+			checkk()
 	}
 }
 
@@ -176,8 +207,7 @@ var flower = function(){
 			ctx.ellipse(405, 195, 45, 160, 60 * Math.PI/130, 0, 2 * Math.PI)
 			ctx.ellipse(405, 195, 45, 160, 50 * Math.PI/63, 0, 2 * Math.PI)
 			ctx.ellipse(405, 195, 45, 160, 48 * Math.PI/41, 0, 2 * Math.PI)
-			ctx.fill()
-		// checkk()
+		checkk()
 	}
 }
 
@@ -195,40 +225,40 @@ var checkk = function(){
 			ctx.fillStyle = "#354A68"
 			ctx.fill();
 		}
-}
+	}
 
 
 var picturesArray = [bunny, rect, flower]
 
 
-// var inputField = document.getElementsByClassName("guessPic")[0];
-// var submitGuess = document.getElementsByClassName("guessPic")[1];
-// var correctPic = function() {
-// 	inputField.style.visibility = "hidden";
-// 	submitGuess.style.visibility = "hidden";
-// 	game.clearCanvas();
-// 	game.picCounter++;
-// }
+var inputField = document.getElementsByClassName("guessPic")[0];
+var submitGuess = document.getElementsByClassName("guessPic")[1];
+var correctPic = function() {
+	inputField.style.visibility = "hidden";
+	submitGuess.style.visibility = "hidden";
+	game.clearCanvas();
+	game.picCounter++;
+}
 
-// submitGuess.addEventListener("click", function(event){
-// 	console.log("cluck")
-// 	if(game.picCounter === 0){
-// 		if(inputField.value === "bunny" || inputField.value === "rabbit"){
-// 			correctPic();
-// 			game.score += 100;
-// 			scoreCounter.innerHTML = "Points: " + game.score;
-// 		} else console.log("nah uh");
-// 	} else if(game.picCounter === 1) {
-// 		if(inputField.value === "rectangle" || inputField.value === "square"){
-// 			correctPic();
-// 			game.score += 100;
-// 			scoreCounter.innerHTML = "Points: " + game.score;
-// 		} else console.log("nah uh");
-// 	} else if(game.picCounter === 2){
-// 		if(inputField.value === "flower" || inputField.value === "plant"){
-// 			correctPic();
-// 			game.score += 100;
-// 			scoreCounter.innerHTML = "Points: " + game.score;
-// 		} else console.log("nah uh");
-// 	}
-// })
+submitGuess.addEventListener("click", function(event){
+	console.log("cluck")
+	if(game.picCounter === 0){
+		if(inputField.value === "bunny" || inputField.value === "rabbit"){
+			correctPic();
+			game.score += 100;
+			scoreCounter.innerHTML = "Points: " + game.score;
+		} else console.log("nah uh");
+	} else if(game.picCounter === 1) {
+		if(inputField.value === "rectangle" || inputField.value === "square"){
+			correctPic();
+			game.score += 100;
+			scoreCounter.innerHTML = "Points: " + game.score;
+		} else console.log("nah uh");
+	} else if(game.picCounter === 2){
+		if(inputField.value === "flower" || inputField.value === "plant"){
+			correctPic();
+			game.score += 100;
+			scoreCounter.innerHTML = "Points: " + game.score;
+		} else console.log("nah uh");
+	}
+})
