@@ -11,7 +11,7 @@ var decrOpacity = document.getElementsByClassName("lessOpaque");
 var hidden = document.getElementsByClassName("hidden");
 var nextQuestion = document.getElementById("nextQ-btn");
 var newPicture = document.getElementById("identPic-btn");
-var questionHeading = document.getElementsByTagName("h1")[1];
+var questionHeading = document.querySelector("h1.questionHeading");
 var answer1 = document.getElementsByTagName("li")[0];
 var answer2 = document.getElementsByTagName("li")[1];
 var answer3 = document.getElementsByTagName("li")[2];
@@ -54,7 +54,7 @@ var game = {
 		var elements = document.querySelectorAll(targetSelector);
 		for(i=0; i<elements.length; i++){
 			var hasClass = elements[i].classList.contains(clss);
-			console.log(hasClass);
+
 			if(hasClass){
 				elements[i].classList.remove(clss);
 			} else {
@@ -133,14 +133,37 @@ questionArray.push(questionSix);
 var questionSeven = new QuestionCreator("On which of the following did Gregor Mendel perform his famous experiment?", "Pea", ["Corn",  "Maize", "Pea", "Wheat"])
 questionArray.push(questionSeven);
 
+var questionNine = new QuestionCreator("Potato is a modified form (outgrowth) of", "root.", ["root.", "stem.", "leaf.", "fruit."])
+questionArray.push(questionNine);
+
+var questionTen = new QuestionCreator("Oxygen in our blood is transported by a protein named", "hemoglobin.", ["hemoglobin.", "keratin.", "collagen.", "myoglobin."])
+questionArray.push(questionTen);
+
+var questionEleven = new QuestionCreator("Botany is the study of ", "plants.", ["animals.", "culture.", "arachnids.", "plants."])
+questionArray.push(questionEleven);
+
+var questionTwelve = new QuestionCreator("Bacterial infections in humans can be treated with what?", "Antibiotics", ["Methamphetamines", "Steroids", "Antibiotics", "Ibuprofin"])
+questionArray.push(questionTwelve);
+
+var questionThirteen = new QuestionCreator("What is the name of the process used by plants to convert sunlight into food?")
+questionArray.push(questionThirteen);
+
+var questionFourteen = new QuestionCreator()
+questionArray.push(questionFourteen);
+
+var questionFifteen = new QuestionCreator()
+questionArray.push(questionFifteen);
+
 
 
 //Picture Logic
 
 newPicture.addEventListener("click", function(){
-	console.log("clerked");
-	inputField.style.visibility = "visible";
-	submitGuess.style.visibility = "visible";
+	inputField.value = null;
+	game.addRemoveClass('hidden', '.visibility-changeable2');
+	// console.log("clerked");
+	// inputField.style.visibility = "visible";
+	// submitGuess.style.visibility = "visible";
 	//have to input something inside of the acceptable array, then will clear canvas and disappear input field
 	//<input type="text" value="type here">
 
@@ -234,8 +257,9 @@ var picturesArray = [bunny, rect, flower]
 var inputField = document.getElementsByClassName("guessPic")[0];
 var submitGuess = document.getElementsByClassName("guessPic")[1];
 var correctPic = function() {
-	inputField.style.visibility = "hidden";
-	submitGuess.style.visibility = "hidden";
+	game.addRemoveClass('hidden', '.visibility-changeable2');
+	// inputField.style.visibility = "hidden";
+	// submitGuess.style.visibility = "hidden";
 	game.clearCanvas();
 	game.picCounter++;
 }
