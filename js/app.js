@@ -112,47 +112,63 @@ function QuestionCreator(question, correctAnswer, answers){
 }
 var questionArray = []
 
-var questionOne = new QuestionCreator("How do you tune a fish?", "D: You don't.", ["A: Don't ask me that.", "B: Who cares?", "C: How do YOU tune a fish?", "D: You don't."])
+var questionOne = new QuestionCreator("Which country has the largest population in the world?'", "C: China",  ["A: Indonesia", "B: India", "C: China", "D: Japan"])
 questionArray.push(questionOne);
 
 var questionTwo = new QuestionCreator("How many years will you live?", "A: Are you ever truly living?", ["A: Are you ever truly living?", "B: Two more, then you're done.", "C: 17.", "D: 115."])
 questionArray.push(questionTwo);
 
-var questionThree = new QuestionCreator("Do you love your parents?", "C: Yes, when they let me spread my wings and fly.", ["A: No.", "B: Gross, cooties.", "C: Yes, when they let me spread my wings and fly.", "D: They are my best friends!"])
+var questionThree = new QuestionCreator("Potato is a modified form (outgrowth) of", "A: root.", ["A: root.", "B: stem.", "C: leaf.", "D: fruit."])
 questionArray.push(questionThree);
 
 var questionFour = new QuestionCreator("Ordinary table salt is sodium chloride. What is baking soda?", "D: Sodium bicarbonate", ["A: Potassium chloride", "B: Potassium carbonate", "C: Potassium hydroxide", "D: Sodium bicarbonate"])
 questionArray.push(questionFour);
 
-var questionFive = new QuestionCreator("Plants receive their nutrients mainly from", "Soil", ["Clorophyll.", "The atmosphere.", "Soil", "Light"])
+var questionFive = new QuestionCreator("If you'd like to buy something you don't need but don't have enough money, what should you do?", "D: Wait until you've earned enough extra cash.", ["A: Buy it with your credit card.", "B: Borrow money from a friend or family member.", "C: Get a bank loan for it.", "D: Wait until you've earned enough extra cash."])
 questionArray.push(questionFive);
 
-var questionSix = new QuestionCreator("Plants have __________ while animals lack it.", "Cellulose", ["Starch", "Cellulose", "Protein", "Fat"])
+var questionSix = new QuestionCreator("Plants have ? while animals lack it.", "B: Cellulose", ["A: Starch", "B: Cellulose", "C: Protein", "D: Fat"])
 questionArray.push(questionSix);
 
-var questionSeven = new QuestionCreator("On which of the following did Gregor Mendel perform his famous experiment?", "Pea", ["Corn",  "Maize", "Pea", "Wheat"])
+var questionSeven = new QuestionCreator("On which of the following did Gregor Mendel perform his famous experiment?", "C: Pea", ["A: Corn",  "B: Maize", "C: Pea", "D: Wheat"])
 questionArray.push(questionSeven);
 
-var questionNine = new QuestionCreator("Potato is a modified form (outgrowth) of", "root.", ["root.", "stem.", "leaf.", "fruit."])
+var questionEight = new QuestionCreator("Do you love your parents?", "C: Yes, when they let me spread my wings and fly.", ["A: No.", "B: Gross, cooties.", "C: Yes, when they let me spread my wings and fly.", "D: They are my best friends!"])
+questionArray.push(questionEight);
+
+var questionNine = new QuestionCreator("At what temperature does water boil in Fahrenheit?", "B: 212°", ["A: 100°", "B: 212°", "C: 273°", "D: 190°"])
 questionArray.push(questionNine);
 
-var questionTen = new QuestionCreator("Oxygen in our blood is transported by a protein named", "hemoglobin.", ["hemoglobin.", "keratin.", "collagen.", "myoglobin."])
+var questionTen = new QuestionCreator("Oxygen in our blood is transported by a protein named", "A: hemoglobin.", ["A: hemoglobin.", "B: keratin.", "C: collagen.", "D: myoglobin."])
 questionArray.push(questionTen);
 
-var questionEleven = new QuestionCreator("Botany is the study of ", "plants.", ["animals.", "culture.", "arachnids.", "plants."])
-questionArray.push(questionEleven);
+var questionEleven = new QuestionCreator("Kool-Aid was originally marketed as", "D: Fruit Smack", ["A: Cool Stuff", "B: Nasty Taste", "C: Sugar Taste", "D: Fruit Smack"])
+questionArray.push(questionEleven)
 
-var questionTwelve = new QuestionCreator("Bacterial infections in humans can be treated with what?", "Antibiotics", ["Methamphetamines", "Steroids", "Antibiotics", "Ibuprofin"])
+var questionTwelve = new QuestionCreator("Bacterial infections in humans can be treated with what?", "C: Antibiotics", ["A: Methamphetamines", "B: Steroids", "C: Antibiotics", "D: Ibuprofin"])
 questionArray.push(questionTwelve);
 
-var questionThirteen = new QuestionCreator("What is the name of the process used by plants to convert sunlight into food?")
+var questionThirteen = new QuestionCreator("What is the name of the process used by plants to convert sunlight into food?", "D: Photosynthesis", ["A: Mitosis", "B: Respiration", "C: Germination", "D: Photosynthesis"])
 questionArray.push(questionThirteen);
 
-var questionFourteen = new QuestionCreator()
+var questionFourteen = new QuestionCreator("Animals that eat both plants and other animals are known as what?", "A: Omnivores", ["A: Omnivores", "B: Carnivores", "C: Normies", "D: Herbivores"])
 questionArray.push(questionFourteen);
 
-var questionFifteen = new QuestionCreator()
+var questionFifteen = new QuestionCreator("What food group has the highest levels of protein?", "C: Meat", ["A: Bread", "B: Vegetables", "C: Meat", "D: Fruit"])
 questionArray.push(questionFifteen);
+
+var questionSixteen = new QuestionCreator("What are some of the best ways to protect yourself against unexpected, catastrophic losses?", "D: All of the above", ["A: Minimizing debt", "B: Having health, home/renters, and auto insurance", "C: Having multiple sources of income", "D: All of the above"])
+questionArray.push(questionSixteen);
+
+var questionSeventeen = new QuestionCreator("Plants receive their nutrients mainly from", "C: soil.", ["A: clorophyll.", "B: the atmosphere.", "C: soil.", "D: light."])
+questionArray.push(questionSeventeen);
+
+var questionEighteen = new QuestionCreator("What percentage of people are left-handed?", "A: 10%", ["A: 10%", "B: 17%", "C: 25%", "D: 35%"])
+questionArray.push(questionEighteen)
+
+var questionNineteen = new QuestionCreator("Botany is the study of ", "D: plants.", ["A: animals.", "B: culture.", "C: arachnids.", "D: plants."])
+questionArray.push(questionNineteen);
+
 
 
 
@@ -161,33 +177,23 @@ questionArray.push(questionFifteen);
 newPicture.addEventListener("click", function(){
 	inputField.value = null;
 	game.addRemoveClass('hidden', '.visibility-changeable2');
-	// console.log("clerked");
-	// inputField.style.visibility = "visible";
-	// submitGuess.style.visibility = "visible";
-	//have to input something inside of the acceptable array, then will clear canvas and disappear input field
-	//<input type="text" value="type here">
-
-
 	var z = game.picCounter;
 	for(i=0; i<picturesArray.length; i++){
 		z++;
 	}
 })
 
+var triangle = function(){
+	for(i=0; i<300; i++){
+		ctx.beginPath()
+		ctx.moveTo(680, 90)
+		ctx.lineTo(220, 180)
+		ctx.lineTo(490, 435)
+		ctx.closePath()
+		checkk();
+	}
+}
 
-// var bird = function(){
-// 	ctx.beginPath();
-// 	ctx.moveTo(550, 320)
-// 	ctx.ellipse(550, 320, 80, 120, 100 * Math.PI/150, 0, 2 * Math.PI)
-// 	ctx.moveTo(535, 325)
-// 	ctx.ellipse(535, 325, 80, 95, 100 * Math.PI/150, 0, 2 * Math.PI)
-// 	ctx.moveTo(475, 235)
-// 	ctx.ellipse(475, 235, 50, 60, 120 * Math.PI/150, 0, 2 * Math.PI)
-// 	ctx.moveTo(475, 190)
-// 	ctx.lineTo(380,240)
-// 	ctx.lineTo(475,260)
-//
-// }
 
 var bunny = function(){
 	for(i=0; i<300; i++){
@@ -205,34 +211,51 @@ var bunny = function(){
 		ctx.ellipse(330, 150, 135, 33, 70 * Math.PI/150, 0, 2 * Math.PI)
 		ctx.moveTo(310, 155)
 		ctx.ellipse(310, 155, 132, 31, 45 * Math.PI/150, 0, 2 * Math.PI)
-	checkk()
+	checkk();
 	}
 }
+
+
+var heart = function(){
+	for(i=0; i<300; i++){
+		ctx.beginPath();
+		ctx.moveTo(350, 280);
+		ctx.bezierCurveTo(350, 274, 340, 250, 300, 250);
+		ctx.bezierCurveTo(240, 250, 240, 325, 240, 325);
+		ctx.bezierCurveTo(240, 360, 280, 404, 350, 440);
+		ctx.bezierCurveTo(420, 404, 460, 360, 460, 325);
+		ctx.bezierCurveTo(460, 325, 460, 250, 400, 250);
+		ctx.bezierCurveTo(370, 250, 350, 274, 350, 280);
+	   	checkk();
+		}
+}
+
 
 var rect = function(){
 	for(i=0; i<300; i++){
 			ctx.beginPath();
 			ctx.rect(100, 100, 200, 200);
-			checkk()
+			checkk();
 	}
 }
 
+
 var flower = function(){
 	for(i=0; i<300; i++){
-		ctx.beginPath()
-			ctx.rect(390, 190, 35, 350)
-			ctx.moveTo(440, 445)
-			ctx.ellipse(440, 445, 15, 45, 30 * Math.PI/150, 0, 2 * Math.PI)
-			ctx.moveTo(375, 385)
-			ctx.ellipse(375, 385, 45, 15, 40 * Math.PI/150, 0, 2 * Math.PI)
-			ctx.moveTo(405, 195)
-			ctx.ellipse(405, 195, 60, 60, 45 * Math.PI/150, 0, 2 * Math.PI)
-			ctx.ellipse(405, 195, 45, 160, 60 * Math.PI/130, 0, 2 * Math.PI)
-			ctx.ellipse(405, 195, 45, 160, 50 * Math.PI/63, 0, 2 * Math.PI)
-			ctx.ellipse(405, 195, 45, 160, 48 * Math.PI/41, 0, 2 * Math.PI)
+		ctx.rect(390, 170, 35, 350)
+		ctx.moveTo(440, 425)
+		ctx.ellipse(440, 425, 25, 60, 30 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.moveTo(375, 395)
+		ctx.ellipse(375, 395, 55, 25, 40 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.moveTo(405, 175)
+		ctx.ellipse(405, 175, 60, 60, 45 * Math.PI/150, 0, 2 * Math.PI)
+		ctx.ellipse(405, 175, 65, 170, 60 * Math.PI/130, 0, 2 * Math.PI)
+		ctx.ellipse(405, 175, 65, 170, 50 * Math.PI/63, 0, 2 * Math.PI)
+		ctx.ellipse(405, 175, 65, 170, 48 * Math.PI/41, 0, 2 * Math.PI)
 		checkk()
 	}
 }
+
 
 var checkk = function(){
 	var cordx = Math.random()*900;
@@ -251,9 +274,6 @@ var checkk = function(){
 	}
 
 
-var picturesArray = [bunny, rect, flower]
-
-
 var inputField = document.getElementsByClassName("guessPic")[0];
 var submitGuess = document.getElementsByClassName("guessPic")[1];
 var correctPic = function() {
@@ -264,25 +284,41 @@ var correctPic = function() {
 	game.picCounter++;
 }
 
+
+var picturesArray = [heart, triangle, bunny, flower, rect]
+
 submitGuess.addEventListener("click", function(event){
 	console.log("cluck")
 	if(game.picCounter === 0){
-		if(inputField.value === "bunny" || inputField.value === "rabbit"){
+		if(inputField.value === "heart" || inputField.value === "love"){
 			correctPic();
 			game.score += 100;
 			scoreCounter.innerHTML = "Points: " + game.score;
 		} else console.log("nah uh");
 	} else if(game.picCounter === 1) {
-		if(inputField.value === "rectangle" || inputField.value === "square"){
+		if(inputField.value === "triangle"){
 			correctPic();
 			game.score += 100;
 			scoreCounter.innerHTML = "Points: " + game.score;
 		} else console.log("nah uh");
 	} else if(game.picCounter === 2){
+		if(inputField.value === "bunny" || inputField.value === "rabbit"){
+			correctPic();
+			game.score += 100;
+			scoreCounter.innerHTML = "Points: " + game.score;
+		} else console.log("nah uh");
+	} else if(game.picCounter === 3){
 		if(inputField.value === "flower" || inputField.value === "plant"){
 			correctPic();
 			game.score += 100;
 			scoreCounter.innerHTML = "Points: " + game.score;
 		} else console.log("nah uh");
+	} else if(game.picCounter === 4){
+		if(inputField.value === "rectangle" || inputField.value === "square"){
+			correctPic();
+			game.score += 100;
+			scoreCounter.innerHTML = "Points: " + game.score;
+		} else console.log("nah uh");
 	}
+
 })
