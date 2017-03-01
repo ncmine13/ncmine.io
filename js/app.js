@@ -226,15 +226,17 @@ var bunny = function(){
 
 
 var heart = function(){
-	for(i=0; i<300; i++){
+	for(i=0; i<400; i++){
 		ctx.beginPath();
-		ctx.moveTo(350, 280);
-		ctx.bezierCurveTo(350, 274, 340, 250, 300, 250);
-		ctx.bezierCurveTo(240, 250, 240, 325, 240, 325);
-		ctx.bezierCurveTo(240, 360, 280, 404, 350, 440);
-		ctx.bezierCurveTo(420, 404, 460, 360, 460, 325);
-		ctx.bezierCurveTo(460, 325, 460, 250, 400, 250);
-		ctx.bezierCurveTo(370, 250, 350, 274, 350, 280);
+		ctx.moveTo(350, 180);
+		ctx.bezierCurveTo(350, 174, 340, 150, 300, 150);
+		ctx.bezierCurveTo(240, 150, 240, 225, 240, 225);
+		ctx.bezierCurveTo(240, 260, 280, 304, 350, 340);
+		ctx.bezierCurveTo(420, 304, 460, 260, 460, 225);
+		ctx.bezierCurveTo(460, 225, 460, 150, 400, 150);
+		ctx.bezierCurveTo(370, 150, 350, 174, 350, 180);
+		//ctx.fill();
+
 	   	checkk();
 		}
 }
@@ -271,13 +273,13 @@ var checkk = function(){
 	var cordy = Math.random()*900;
 	if(ctx.isPointInPath(cordx, cordy)){
 			ctx.beginPath()
-			ctx.arc(cordx, cordy, 7, 0, Math.PI * 2, true);
-			ctx.fillStyle = "#E47505"
+			ctx.arc(cordx, cordy, 5, 0, Math.PI * 2, true);
+			ctx.fillStyle = "#021F26"
 			ctx.fill();
 	} else {
 			ctx.beginPath()
 			ctx.arc(cordx, cordy, 7, 0, Math.PI * 2, true);
-			ctx.fillStyle = "#354A68"
+			ctx.fillStyle = "#D3D7D8"
 			ctx.fill();
 		}
 	}
