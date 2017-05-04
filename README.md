@@ -8,3 +8,7 @@ Run at https://ncmine13.github.io/ncmine13.io/
 ![1] (https://github.com/ncmine13/ncmine13.io/blob/master/Wireframe1.png) 
 
 ![2] (https://github.com/ncmine13/ncmine13.io/blob/master/Wireframe2.png)
+
+
+![1](Wireframe1.png)
+![2](Wireframe2.png)
